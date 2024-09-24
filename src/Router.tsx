@@ -1,7 +1,8 @@
 import { createHashRouter } from "react-router-dom";
 import { NotFound } from "./pages/NotFound";
 import { Home } from "./pages/Home";
-import { Layout } from "./pages/LAyout";
+import { Layout } from "./pages/Layout";
+
 
 export const router = createHashRouter([
   {
