@@ -6,6 +6,7 @@ import { useEffect, useReducer } from "react";
 import { ActionType, JobReducer } from "./reducers/jobReducer";
 import { getJobs } from "./service/jobService";
 
+
 function App() {
   const [jobs, dispatch] = useReducer(JobReducer, []);
 
@@ -32,5 +33,6 @@ function App() {
   </JobContext.Provider>
   </>;
 }
+  
 
 export default App;
