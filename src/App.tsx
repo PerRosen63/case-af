@@ -1,13 +1,13 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./Router";
-import { JobContext } from "./contexts/JobContext";
-import { useEffect, useReducer } from "react";
-import { ActionType, JobReducer } from "./reducers/jobReducer";
-import { getJobs } from "./service/jobService";
+//import { JobContext } from "./contexts/JobContext";
+//import { useEffect, useReducer } from "react";
+//import { ActionType, JobReducer } from "./reducers/jobReducer";
+//import { getJobs } from "./service/jobService";
 
 function App() {
-  const [jobs, dispatch] = useReducer(JobReducer, []);
+  /* const [jobs, dispatch] = useReducer(JobReducer, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -22,15 +22,15 @@ function App() {
     
     getData();
   
-   });
+   }); */
 
-
-
-  return <>
-  <JobContext.Provider value={{ jobs, dispatch}}>
-    <RouterProvider router={router}></RouterProvider>
-  </JobContext.Provider>
-  </>;
+  return (
+    <>
+      {/* <JobContext.Provider value={{ jobs, dispatch}}> */}
+      <RouterProvider router={router}></RouterProvider>
+      {/* </JobContext.Provider> */}
+    </>
+  );
 }
 
 export default App;
