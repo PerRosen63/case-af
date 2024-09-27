@@ -15,7 +15,7 @@ export const JobPresentation = ({
   
   return (<>
     <div >
-      <h2>{job.headline}</h2>
+      <h2>{job.id}</h2>
   
       
     </div>
