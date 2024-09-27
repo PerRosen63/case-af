@@ -8,20 +8,17 @@ import { getJobs } from "./service/jobService";
 
 function App() {
    const [jobs, dispatch] = useReducer(JobReducer, []);
-
+   
    useEffect(() => {
     const getData = async () => {
       const data = await getJobs();
       dispatch({
         type: ActionType.LOADED,
-        payload: data, 
+        payload: data,
       });
     };
-  
-    if (jobs.length > 0) return; 
-    
     getData();
-  }, [jobs]); 
+  }, []); // Tom beroende-array
 
   function myFunction(e: string) {
     console.log(e);

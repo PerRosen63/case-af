@@ -1,8 +1,14 @@
 import { IJob } from "../models/IJob";
 import { get } from "./jobBase";
 
-// Funktion för att hämta jobb från rätt endpoint
+
 export const getJobs = async (): Promise<IJob[]> => {
-  // Om endpoint kräver parametrar eller query, lägg till dessa här
-  return await get<IJob[]>("/search");  // Använd det rätta API-endpoint här
+  try {
+    const jobs = await get<IJob[]>("");
+    console.log("Jobs fetched:", jobs); 
+    return jobs;
+  } catch (error) {
+    console.error("Error fetching jobs:", error);
+    return [];
+  }
 };

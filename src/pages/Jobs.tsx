@@ -1,12 +1,20 @@
+import { useContext } from "react";
 import { JobsPresentation } from "../components/JobsPresentation";
-import { OccupationsList } from "../components/OccupationsList";
+import { JobContext } from "../contexts/JobContext";
+//import { OccupationsList } from "../components/OccupationsList";
 
 export const Jobs = () => {
+  const { jobs } = useContext(JobContext);
   return (
     <div>
-      <h2>Jobs</h2>
-      <OccupationsList></OccupationsList>
-      <JobsPresentation></JobsPresentation>
+      <div>
+      <h1>Jobs</h1>
+      <p>Antal jobb: {jobs.length}</p> 
+      <JobsPresentation />
+    </div>
+
+      {/*<OccupationsList></OccupationsList>*/}
+      {/*<JobsPresentation></JobsPresentation>*/}
     </div>
   );
 };

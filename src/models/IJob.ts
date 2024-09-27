@@ -9,6 +9,9 @@ export interface IJob {
   headline: "string",
   application_deadline: "string($date-time)",
   number_of_vacancies: "integer",
+
+
+  /*
   "description": {
     "text": "string",
     "text_formatted": "string",
@@ -202,5 +205,5 @@ export interface IJob {
 
 
 
-
+*/
 }

@@ -13,12 +13,11 @@ export const JobsPresentation = () => {
   
   return (
     <>
-      <h1>Jobs</h1>
-      <p>Antal jobb: {jobs.length}</p>
-      {jobs.length === 0 && <p>Inga jobb tillgängliga</p>}
-      {jobs.map((job) => (
-        <JobPresentation job={job} key={job.id} />
-      ))}
+      {jobs.length === 0 ? (
+        <p>Inga jobb hittades.</p>
+      ) : (
+        jobs.map(job => <JobPresentation job={job} key={job.id} />)
+      )}
     </>
   );
 };
