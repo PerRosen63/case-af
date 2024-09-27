@@ -3,6 +3,9 @@ import { useEffect, useReducer } from "react";
 import { JobContext } from "./contexts/JobContext";
 import { ActionType, JobReducer } from "./reducers/jobReducer";
 import { getJobs } from "./service/jobService";
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Content from './components/Content';
 import "./App.css";
 
 function App() {
@@ -27,7 +30,9 @@ function App() {
 
   return (
     <JobContext.Provider value={{ jobs, dispatch }}>
-
+      <Header />
+      <Content onButtonClick={myFunction} /> {}
+      <Footer />
     </JobContext.Provider>
   );
 }
