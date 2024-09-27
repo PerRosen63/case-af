@@ -2,7 +2,7 @@ import { IJob } from "../models/IJob";
 
 export interface IAction {
   type: ActionType;
-  payload: string;
+  payload: unknown;
 }
 
 export enum ActionType {

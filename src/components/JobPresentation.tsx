@@ -11,7 +11,8 @@ export const JobPresentation = ({
   
   job
 }: IJobPresentation) => {
-  const { dispatch } = useContext(JobContext)
+  /*const { dispatch } = */
+  useContext(JobContext)
 
   
   return (<>

@@ -8,7 +8,7 @@ import { getJobs } from "./service/jobService";
 
 function App() {
    const [jobs, dispatch] = useReducer(JobReducer, []);
-   
+
    useEffect(() => {
     const getData = async () => {
       const data = await getJobs();
@@ -19,11 +19,11 @@ function App() {
     };
     getData();
   }, []); // Tom beroende-array
-
+/*
   function myFunction(e: string) {
     console.log(e);
   }
-
+*/
   return (
     <>
        <JobContext.Provider value={{ jobs, dispatch }}>
