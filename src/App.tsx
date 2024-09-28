@@ -14,11 +14,12 @@ function App() {
       const data = await getJobs();
       dispatch({
         type: ActionType.LOADED,
-        payload: data,
+        payload: JSON.stringify(data),
       });
     };
+    if (jobs.length > 0 ) return; 
     getData();
-  }, []); // Tom beroende-array
+  }); 
 /*
   function myFunction(e: string) {
     console.log(e);

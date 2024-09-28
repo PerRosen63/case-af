@@ -2,7 +2,7 @@ import { IJob } from "../models/IJob";
 
 export interface IAction {
   type: ActionType;
-  payload: unknown;
+  payload: string;
 }
 
 export enum ActionType {
@@ -17,8 +17,9 @@ export const JobReducer = (
 
   switch(action.type) {
     case ActionType.LOADED: {
-      console.log("Jobs loaded:", action.payload);
-      return action.payload as unknown as IJob[];
+      return JSON.parse(action.payload);
+
+      //console.log("Jobs loaded:", action.payload);
     }
    
     default:

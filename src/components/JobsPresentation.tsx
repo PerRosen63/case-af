@@ -18,6 +18,15 @@ export const JobsPresentation = () => {
       ) : (
         jobs.map(job => <JobPresentation job={job} key={job.id} />)
       )}
+
+        <ul>
+          {jobs.map((job) => (
+            <li key={job.id}>
+              <h3>{job.label}</h3>
+            </li>
+          ))}
+        </ul>
     </>
   );
 };
+

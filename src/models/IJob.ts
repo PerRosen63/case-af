@@ -1,14 +1,14 @@
 export interface IJob {
 
-  id: "string",
-  external_id: "string",
-  original_id: "string",
-  label: "string",
+  id: string;
+  external_id: string;
+  original_id: string;
+  label: string;
   //"webpage_url": {},
-  logo_url: "string",
-  headline: "string",
-  application_deadline: "string($date-time)",
-  number_of_vacancies: "integer",
+  logo_url: string;
+  headline: string;
+  //application_deadline: string($date-time);
+  number_of_vacancies: number;
 
 
   /*
