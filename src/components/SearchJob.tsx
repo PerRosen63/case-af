@@ -1,18 +1,17 @@
-import { FormInputVariation, FormInputType, FormInputValidation } from "@digi/arbetsformedlingen";
-import { DigiFormInput } from "@digi/arbetsformedlingen-react";
+import { FormInputSearchVariation, FormInputType } from "@digi/arbetsformedlingen";
+import { DigiFormInputSearch } from "@digi/arbetsformedlingen-react";
 
 export const SearchJob = () => {
 
   return ( <>
   
-  <DigiFormInput
-    afLabel="Sök:"
-    afVariation={FormInputVariation.MEDIUM}
-    afType={FormInputType.TEXT}
-    afValidation={FormInputValidation.NEUTRAL}	 	
-    afInputmode="{FormInputMode.SEARCH}"	 	
-  >
-  </DigiFormInput>
+  <DigiFormInputSearch
+	afLabel="Sök jobb"
+	afVariation={FormInputSearchVariation.MEDIUM}
+	afType={FormInputType.SEARCH}	
+	afButtonText="Sök"
+>
+</DigiFormInputSearch>
   
   
   
