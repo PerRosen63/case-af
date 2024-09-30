@@ -12,8 +12,6 @@ export const SearchJob = () => {
     afButtonText="Sök"
   >
   </DigiFormInputSearch>
-
-  
   
   </>)
 };
