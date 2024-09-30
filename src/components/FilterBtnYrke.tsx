@@ -1,36 +1,42 @@
+import { useState, useEffect } from "react";
 import { FormSelectFilterValidation } from "@digi/arbetsformedlingen";
 import { DigiFormSelectFilter } from "@digi/arbetsformedlingen-react";
+import { getOccupation } from "../service/taxonomyService"; // Hämta yrken från tjänsten
 
-export const FilterBtnYrke = () => {
+export const FilterBtnYrke = ({ selectedOccupations, setSelectedOccupations }) => {
+  const [occupationItems, setOccupationItems] = useState([]);
 
-  
-  _listItems: IListItems[] = [
-    {"label":"Danska"},
-    {"label":"Tyska"},
-    {"label":"Ryska"},
-    {"label":"Franska"},
-    {"label":"Finska"},
-    {"label":"Holländska"},
-    {"label":"Italienska"},
-    {"label":"Spanska"},
-    {"label":"Grekiska"},
-    {"label":"Romänska"}
-    ]
+  // Hämta yrken från API:et när komponenten laddas
+  useEffect(() => {
+    const fetchOccupations = async () => {
+      const occupations = await getOccupation();
+      const formattedOccupations = occupations.map((occupation) => ({
+        label: occupation.preferred_label,
+        value: occupation.id
+      }));
+      setOccupationItems(formattedOccupations);
+    };
 
+    fetchOccupations();
+  }, []);
 
-  return (<>
-   <DigiFormSelectFilter
-    afFilterButtonTextLabel="Välj språk"
-    afDescription="Beskrivande text"
-    afFilterButtonText="Inget språk valt"
-    afSubmitButtonText="Filtrera"
-    afMultipleItems={true}
-    afValidation={FormSelectFilterValidation.NEUTRAL}
-    afListItems={listItems}
-      
-  >
-  </DigiFormSelectFilter>
-  
-  
-  </>)
+  const handleOccupationChange = (selectedValues) => {
+    setSelectedOccupations(selectedValues); // Uppdatera valda yrken i den överordnade komponenten
+  };
+
+  return (
+    <>
+      <DigiFormSelectFilter
+        afFilterButtonTextLabel="Välj yrke"
+        afDescription="Välj ett eller flera yrken från listan"
+        afFilterButtonText="Välj yrke"
+        afSubmitButtonText="Filtrera"
+        afMultipleItems={true}
+        afValidation={FormSelectFilterValidation.NEUTRAL}
+        afListItems={occupationItems}
+        afOnChange={handleOccupationChange}
+        afSelectedItems={selectedOccupations}
+      />
+    </>
+  );
 };
