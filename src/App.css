@@ -1,3 +1,20 @@
+#root {   /*  design system override  */
+  --digi--global--color--profile--blue--dark: #141010;
+  --digi--global--color--profile--blue--base: #443131;
+  --digi--global--color--profile--blue--light: #5a4b42;
+  --digi--global--color--profile--green--dark: #ffb875;
+  --digi--global--color--profile--green--light: #ffd9b8;
+  --digi--global--color--profile--green--lighter: #ffe1c7;
+  --digi--global--color--cta--green--base: #93e2e0;
+  --digi--global--color--cta--green--light: #b2ebe8;
+  --digi--global--color--cta--green--lighter: #dbf5f5;
+  --digi--global--color--cta--link--base: #4e6172;
+  --digi--global--color--cta--hover--base: #61778f;
+  --digi--global--color--cta--visited--base: #7b263d;
+}
+
+
+/*
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -40,3 +57,4 @@
 .read-the-docs {
   color: #888;
 }
+  */

@@ -10,8 +10,10 @@ const Content: React.FC<ContentProps> = ({ onButtonClick }) => {
   return (
     <main>
       <p>Innehållet/Content på vår sida</p>
-      <DigiButton onAfOnClick={onButtonClick} afVariation={ButtonVariation.PRIMARY}>
-        En knapp
+      <DigiButton
+        onAfOnClick={onButtonClick}
+        afVariation={ButtonVariation.PRIMARY}>
+        primär knapp
       </DigiButton>
     </main>
   );
