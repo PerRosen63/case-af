@@ -11,7 +11,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./Router";
 
 function App() {
-  /* const [jobs, dispatch] = useReducer(JobReducer, []);
+ const [jobs, dispatch] = useReducer(JobReducer, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -24,7 +24,7 @@ function App() {
     if (jobs.length > 0) return; 
     
     getData();
-  }, [jobs]); */
+  }, [jobs]);
 
   /* function myFunction(e: any) {
     console.log(e);
