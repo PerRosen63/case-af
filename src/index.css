@@ -17,6 +17,12 @@
   display: block;
 }
 
+.filter-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
 /* .btn {
   background-color: var(--digi--color--background--primary);
 }

@@ -13,13 +13,11 @@ export const Jobs = () => {
 
       <SearchJob />
       
-      {/* Skicka valda yrken och funktionen för att uppdatera dem till FilterBtnYrke */}
       <FilterBtnYrke
         selectedOccupations={selectedOccupations}
         setSelectedOccupations={setSelectedOccupations}
       />
 
-      {/* Skicka valda yrken till OccupationsList för att filtrera listan */}
       <OccupationsList selectedOccupations={selectedOccupations} />
 
       <JobsPresentation />
