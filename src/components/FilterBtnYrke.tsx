@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { FormSelectFilterValidation } from "@digi/arbetsformedlingen";
 import { DigiFormSelectFilter } from "@digi/arbetsformedlingen-react";
-import { getOccupation } from "../service/taxonomyService"; // Hämta yrken från tjänsten
+import { getOccupation } from "../service/taxonomyService"; 
 
-export const FilterBtnYrke = ({ selectedOccupations, setSelectedOccupations }) => {
-  const [occupationItems, setOccupationItems] = useState([]);
+interface FilterBtnYrkeProps {
+  selectedOccupations: string[];
+  setSelectedOccupations: (occupations: string[]) => void;
+}
 
-  // Hämta yrken från API:et när komponenten laddas
+export const FilterBtnYrke = ({ selectedOccupations, setSelectedOccupations }: FilterBtnYrkeProps) => {
+  const [occupationItems, setOccupationItems] = useState<{ label: string; value: string }[]>([]);
+
   useEffect(() => {
     const fetchOccupations = async () => {
       const occupations = await getOccupation();
@@ -20,8 +24,8 @@ export const FilterBtnYrke = ({ selectedOccupations, setSelectedOccupations }) =
     fetchOccupations();
   }, []);
 
-  const handleOccupationChange = (selectedValues) => {
-    setSelectedOccupations(selectedValues); // Uppdatera valda yrken i den överordnade komponenten
+  const handleOccupationChange = (selectedValues: string[]) => {
+    setSelectedOccupations(selectedValues);
   };
 
   return (

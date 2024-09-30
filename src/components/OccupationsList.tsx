@@ -3,7 +3,11 @@ import { IOccupation } from "../models/IOccupation";
 import { getOccupation } from "../service/taxonomyService";
 import { DigiIconChevronRight } from "@digi/arbetsformedlingen-react";
 
-export const OccupationsList = ({ selectedOccupations }) => {
+interface OccupationsListProps {
+  selectedOccupations: string[];
+}
+
+export const OccupationsList = ({ selectedOccupations }: OccupationsListProps) => {
   const [occupationsGroup, setOccupationsGroup] = useState<IOccupation[]>([]);
   const [openGroups, setOpenGroups] = useState<{ [id: string]: boolean }>({});
 
@@ -28,7 +32,6 @@ export const OccupationsList = ({ selectedOccupations }) => {
     });
   };
 
- 
   const filteredOccupations = occupationsGroup.filter((occupationGroup) => {
     return (
       selectedOccupations.length === 0 || 
