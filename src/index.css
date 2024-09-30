@@ -1,9 +1,27 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
+/* Common css */
 
 
-:root {
+
+/* OccupationsList */
+.btn-content {
+  display: flex;
+}
+
+.occupation {
+  display: none;
+}
+.occupation.open {
+  display: block;
+}
+
+/* .btn {
+  background-color: var(--digi--color--background--primary);
+}
+ */
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -71,3 +89,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+ */
