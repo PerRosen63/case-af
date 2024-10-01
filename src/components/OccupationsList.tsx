@@ -3,21 +3,22 @@ import { IOccupation } from "../models/IOccupation";
 import { getOccupation } from "../service/taxonomyService";
 import { DigiIconChevronRight } from "@digi/arbetsformedlingen-react";
 
-export const OccupationsList = () => {
-  console.log("test:", "test"); // Infinite loop?
-  const [occupationsGroup, setOccupationsGruop] = useState<IOccupation[]>([]);
+interface OccupationsListProps {
+  selectedOccupations: string[];
+}
 
+export const OccupationsList = ({ selectedOccupations }: OccupationsListProps) => {
+  const [occupationsGroup, setOccupationsGroup] = useState<IOccupation[]>([]);
   const [openGroups, setOpenGroups] = useState<{ [id: string]: boolean }>({});
 
-  // Fetch data ONLY ONCE when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       const data = await getOccupation();
-      setOccupationsGruop(data);
+      setOccupationsGroup(data);
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures this runs only once
+  }, []);
 
   const toggleGroup = (groupId: string) => {
     setOpenGroups((prevOpenGroups) => {
@@ -26,20 +27,24 @@ export const OccupationsList = () => {
         return acc;
       }, {} as { [id: string]: boolean });
 
-      // Open only the clicked group
       updatedOpenGroups[groupId] = !prevOpenGroups[groupId];
-      console.log("openGroups after update:", updatedOpenGroups); // Check if the state reflects the change
       return updatedOpenGroups;
     });
-    console.log("test2:", "test2");
   };
+
+  const filteredOccupations = occupationsGroup.filter((occupationGroup) => {
+    return (
+      selectedOccupations.length === 0 || 
+      selectedOccupations.includes(occupationGroup.id) 
+    );
+  });
 
   return (
     <>
       <h1>Occupations List</h1>
       <div>
         <ul className="occupation-group">
-          {occupationsGroup.map((occupationGroup) => (
+          {filteredOccupations.map((occupationGroup) => (
             <li className="occupation-group-item" key={occupationGroup.id}>
               <input
                 type="checkbox"
@@ -49,7 +54,7 @@ export const OccupationsList = () => {
               <button onClick={() => toggleGroup(occupationGroup.id)}>
                 <span className="btn-content">
                   <p>{occupationGroup.preferred_label}</p>
-                  <DigiIconChevronRight></DigiIconChevronRight>
+                  <DigiIconChevronRight />
                 </span>
               </button>
               <ul
