@@ -1,17 +1,12 @@
-// import { RouterProvider } from "react-router-dom";
-// import { useEffect, useReducer } from "react";
-// import { JobContext } from "./contexts/JobContext";
-// import { ActionType, JobReducer } from "./reducers/jobReducer";
-// import { getJobs } from "./service/jobService";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
-// import Content from "./components/Content";
 import { RouterProvider } from "react-router-dom";
 // import "./App.css";
 import { router } from "./Router";
+import { useReducer, useEffect } from "react";
+import { JobReducer, ActionType } from "./reducers/JobReducer";
+import { getJobs } from "./service/jobService";
 
 function App() {
- /* const [jobs, dispatch] = useReducer(JobReducer, []);
+ const [jobs, dispatch] = useReducer(JobReducer, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -24,7 +19,7 @@ function App() {
     if (jobs.length > 0) return; 
     
     getData();
-  }, [jobs]); */
+  }, [jobs]);
 
   /* function myFunction(e: any) {
     console.log(e);
