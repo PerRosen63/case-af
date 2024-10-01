@@ -10,6 +10,7 @@ export const SearchJob = () => {
     afVariation={FormInputSearchVariation.MEDIUM}
     afType={FormInputType.SEARCH}	
     afButtonText="Sök"
+    className="search-input"
   >
   </DigiFormInputSearch>
   
