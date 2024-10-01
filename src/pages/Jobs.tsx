@@ -14,7 +14,6 @@ export const Jobs = () => {
       </div>
 
       <OccupationsList></OccupationsList>
-      {/*<JobsPresentation></JobsPresentation>*/}
     </div>
   );
 };

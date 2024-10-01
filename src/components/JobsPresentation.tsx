@@ -22,7 +22,7 @@ export const JobsPresentation = () => {
         <ul>
           {jobs.map((job) => (
             <li key={job.id}>
-              <h3>{job.label}</h3>
+              <h3>{job.headline}</h3>
             </li>
           ))}
         </ul>
