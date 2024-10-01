@@ -27,7 +27,6 @@ function App() {
   /* function myFunction(e: any) {
     console.log(e);
   } */
-
   return (
     <>
       <JobContext.Provider value={{ jobs, dispatch }}>
