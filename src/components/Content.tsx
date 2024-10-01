@@ -11,6 +11,7 @@ const Content: React.FC<ContentProps> = ({ onButtonClick }) => {
     <main>
       <p>Innehållet/Content på vår sida</p>
       <DigiButton
+
         onAfOnClick={onButtonClick}
         afVariation={ButtonVariation.PRIMARY}>
         primär knapp
