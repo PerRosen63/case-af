@@ -1,21 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { JobContext } from "../contexts/JobContext";
 import { JobPresentation } from "./JobPresentation";
 
 export const JobsPresentation = () => {
   const { jobs } = useContext(JobContext);
 
+  useEffect(() => {
+    console.log("Jobs array:", jobs);
+  }, [jobs]);
 
 
-  return (<>
-  <h1>Jobs</h1>
-    {jobs.map(job => 
-      <JobPresentation job={job} key={job.id}>
-        
-      </JobPresentation>
-
-   )}
   
-  
-  </>)
-}
+  return (
+    <>
+      {jobs.length === 0 ? (
+        <p>Inga jobb hittades.</p>
+      ) : (
+        jobs.map(job => <JobPresentation job={job} key={job.id} />)
+      )}
+
+        <ul>
+          {jobs.map((job) => (
+            <li key={job.id}>
+              <h3>{job.headline}</h3>
+            </li>
+          ))}
+        </ul>
+    </>
+  );
+};
+

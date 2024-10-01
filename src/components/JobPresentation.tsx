@@ -8,14 +8,16 @@ interface IJobPresentation {
 }
 
 export const JobPresentation = ({
+  
   job
 }: IJobPresentation) => {
-  const { dispatch } = useContext(JobContext)
+  /*const { dispatch } = */
+  useContext(JobContext)
 
   
   return (<>
     <div >
-      <h2>{job.headline}</h2>
+      <h2>{job.id}</h2>
   
       
     </div>
