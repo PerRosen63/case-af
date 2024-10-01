@@ -1,22 +1,26 @@
-import { useState, useEffect } from "react";
-import { FormSelectFilterValidation } from "@digi/arbetsformedlingen";
-import { DigiFormFilter, DigiFormSelectFilter } from "@digi/arbetsformedlingen-react";
-import { getOccupation } from "../service/taxonomyService"; 
+import { DigiFormFilter } from "@digi/arbetsformedlingen-react";
 
+/*
 interface FilterBtnYrkeProps {
   selectedOccupations: string[];
   setSelectedOccupations: (occupations: string[]) => void;
 }
+*/
+export const FilterBtnYrke = () => {
 
+
+  /*
 export const FilterBtnYrke = ({ selectedOccupations, setSelectedOccupations }: FilterBtnYrkeProps) => {
   const [occupationItems, setOccupationItems] = useState<{ label: string; value: string }[]>([]);
-
+*/
+  // Hämta yrken vid komponentens montering
+  /*
   useEffect(() => {
     const fetchOccupations = async () => {
       const occupations = await getOccupation();
       const formattedOccupations = occupations.map((occupation) => ({
         label: occupation.preferred_label,
-        value: occupation.id
+        value: occupation.id,
       }));
       setOccupationItems(formattedOccupations);
     };
@@ -27,8 +31,7 @@ export const FilterBtnYrke = ({ selectedOccupations, setSelectedOccupations }: F
   const handleOccupationChange = (selectedValues: string[]) => {
     setSelectedOccupations(selectedValues);
   };
-
-  
+  */
   return (
     <>
       <div className="filter-buttons">
