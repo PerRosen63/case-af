@@ -3,7 +3,7 @@ import { DigiButton } from '@digi/arbetsformedlingen-react';
 import { ButtonVariation } from '@digi/arbetsformedlingen';
 
 interface ContentProps {
-  onButtonClick: (e: any) => void;
+  onButtonClick: (e: unknown) => void;
 }
 
 const Content: React.FC<ContentProps> = ({ onButtonClick }) => {
