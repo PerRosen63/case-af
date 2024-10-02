@@ -1,7 +1,28 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
-/* design system override overview
+/* OccupationsList */
+.btn-content {
+  display: flex;
+}
+
+.occupation {
+  display: none;
+}
+.occupation.open {
+  display: block;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.search-input {
+  width: 200px;
+}
+
+/* design system override overview */
 #root {   
   --digi--global--color--profile--blue--dark: #141010;
   --digi--global--color--profile--blue--base: #443131;
@@ -22,4 +43,4 @@
 
   --digi--color--text--inverted: #000000; 
 }
-*/
+
