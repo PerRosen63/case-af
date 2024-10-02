@@ -28,3 +28,13 @@
 
   --digi--color--text--inverted: #000000; 
 }
+
+/* --------------------- Common css -------------------- */
+.filter-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.search-input {
+  width: 350px;
+}

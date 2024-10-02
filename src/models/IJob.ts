@@ -115,98 +115,93 @@ export interface IJob {
         legacy_ams_taxonomy_id: "string",
         weight: 0
       }
-    ],/*
-    "languages": [
+    ],
+    languages: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ],
-    "work_experiences": [
+    work_experiences: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+      concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ],
-    "education": [
+    education: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ],
-    "education_level": [
+    education_level: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ]
   },
-  "nice_to_have": {
-    "skills": [
+  nice_to_have: {
+    skills: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ],
-    "languages": [
+    languages: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ],
-    "work_experiences": [
+    work_experiences: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ],
-    "education": [
+    education: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ],
-    "education_level": [
+    education_level: [
       {
-        "concept_id": "string",
-        "label": "string",
-        "legacy_ams_taxonomy_id": "string",
-        "weight": 0
+        concept_id: "string",
+        label: "string",
+        legacy_ams_taxonomy_id: "string",
+        weight: 0
       }
     ]
   },
-  "application_contacts": {
-    "name": "string",
-    "description": "string",
-    "email": "string",
-    "telephone": "string",
-    "contact_type": "string"
+  application_contacts: {
+    name: "string",
+    description: "string",
+    email: "string",
+    telephone: "string",
+    contact_type: "string"
   },
-  "publication_date": "2024-09-25T06:49:52.441Z",
-  "last_publication_date": "2024-09-25T06:49:52.441Z",
-  "removed": true,
-  "removed_date": "2024-09-25T06:49:52.441Z",
-  "source_type": "string",
-  "timestamp": 0
-
-
-
-
-*/
+  publication_date: "2024-09-25T06:49:52.441Z",
+  last_publication_date: "2024-09-25T06:49:52.441Z",
+  removed: true,
+  removed_date: "2024-09-25T06:49:52.441Z",
+  source_type: "string",
+  timestamp: 0
 }
