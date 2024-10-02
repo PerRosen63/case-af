@@ -9,24 +9,25 @@ export const JobsPresentation = () => {
     console.log("Jobs array:", jobs);
   }, [jobs]);
 
-
-  
   return (
     <>
-      {jobs.length === 0 ? (
+     {/* {jobs.length === 0 ? (
         <p>Inga jobb hittades.</p>
       ) : (
         jobs.map(job => <JobPresentation job={job} key={job.id} />)
       )}
-
-        <ul>
-          {jobs.map((job) => (
-            <li key={job.id}>
-              <h3>{job.headline}</h3>
-            </li>
-          ))}
-        </ul>
+*/}
+{jobs.length === 0 ? (
+        <p>Inga jobb hittades.</p>
+      ) : (
+      <ul>
+        {jobs.map((job) => (
+          <li key={job.id}>
+            <h3>{job.occupation.label}</h3>
+          </li>
+        ))}
+      </ul>
+        )}
     </>
   );
 };
-
