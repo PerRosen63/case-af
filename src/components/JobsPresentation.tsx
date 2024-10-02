@@ -10,12 +10,6 @@ export const JobsPresentation = () => {
 
   return (
     <>
-     {/* {jobs.length === 0 ? (
-        <p>Inga jobb hittades.</p>
-      ) : (
-        jobs.map(job => <JobPresentation job={job} key={job.id} />)
-      )}
-*/}
 {jobs.length === 0 ? (
         <p>Inga jobb hittades.</p>
       ) : (
@@ -28,6 +22,7 @@ export const JobsPresentation = () => {
               ? job.workplace_address.city 
               : job.workplace_address.municipality}
             </h4>
+            <p>Publicerad: {job.publication_date}</p>
           </li>
         ))}
       </ul>
