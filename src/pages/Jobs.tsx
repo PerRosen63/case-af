@@ -8,7 +8,6 @@ import { SearchJob } from "../components/SearchJob";
 export const Jobs = () => {
   const { jobs } = useContext(JobContext);
 
-  // Lägg till state för selectedOccupations
   const [selectedOccupations, setSelectedOccupations] = useState<string[]>([]);
 
   return (
