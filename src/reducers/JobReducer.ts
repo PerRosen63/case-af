@@ -1,9 +1,9 @@
 import { IJob } from "../models/IJob";
 
-
 export interface IAction {
   type: ActionType;
   payload: string | IJob[];
+
 }
 
 export enum ActionType {
@@ -20,7 +20,6 @@ export const JobReducer = (
 
   switch (action.type) {
     case ActionType.LOADED: {
-
       return Array.isArray(action.payload) ? action.payload : JSON.parse(action.payload as string);
     }
 
