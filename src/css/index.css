@@ -1,7 +1,13 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
-/* design system override overview
+@import 'mobile.css';
+@import url('desktopSmall.css') screen and (min-width: 576px);
+@import url('desktopMedium.css') screen and (min-width: 768px);
+@import url('desktopLarge.css') screen and (min-width: 992px);
+
+
+ design system override overview
 #root {   
   --digi--global--color--profile--blue--dark: #141010;
   --digi--global--color--profile--blue--base: #443131;
@@ -22,4 +28,3 @@
 
   --digi--color--text--inverted: #000000; 
 }
-*/

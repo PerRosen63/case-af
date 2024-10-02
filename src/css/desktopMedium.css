@@ -1,0 +1,8 @@
+/* >768 */
+
+main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    margin: 16px;
+  }
