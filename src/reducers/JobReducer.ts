@@ -2,11 +2,12 @@ import { IJob } from "../models/IJob";
 
 export interface IAction {
   type: ActionType;
-  payload: string;
+  payload: string | IJob[];
 }
 
 export enum ActionType {
-  LOADED
+  LOADED,
+  SEARCHED
 }
 
 export const JobReducer = (
@@ -15,14 +16,16 @@ export const JobReducer = (
 ): IJob[] => {
   console.log("Action received:", action);
 
-  switch(action.type) {
+  switch (action.type) {
     case ActionType.LOADED: {
-      return JSON.parse(action.payload);
-
-      //console.log("Jobs loaded:", action.payload);
+      return Array.isArray(action.payload) ? action.payload : JSON.parse(action.payload as string);
     }
-   
+
+    case ActionType.SEARCHED: {
+      return Array.isArray(action.payload) ? action.payload : JSON.parse(action.payload as string);
+    }
+
     default:
       return jobs;
   }
-}
+};
