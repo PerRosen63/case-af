@@ -21,9 +21,6 @@ function App() {
     getData();
   }, [jobs.length]);
 
-  /* function myFunction(e: any) {
-    console.log(e);
-  } */
   return (
     <>
       <JobContext.Provider value={{ jobs, dispatch }}>
