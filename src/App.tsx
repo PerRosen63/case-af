@@ -1,5 +1,6 @@
 
 import "./App.css";
+import "./css/index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Router";
 import { JobContext } from "./contexts/JobContext";
