@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import { JobContext } from "../contexts/JobContext";
-import { JobPresentation } from "./JobPresentation";
 
 export const JobsPresentation = () => {
   const { jobs } = useContext(JobContext);
@@ -24,6 +23,11 @@ export const JobsPresentation = () => {
         {jobs.map((job) => (
           <li key={job.id}>
             <h3>{job.occupation.label}</h3>
+            <h4 style={{ display: "inline" }}>
+              {job.employer.name},  {job.workplace_address.city 
+              ? job.workplace_address.city 
+              : job.workplace_address.municipality}
+            </h4>
           </li>
         ))}
       </ul>

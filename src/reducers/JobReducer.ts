@@ -3,14 +3,12 @@ import { IJob } from "../models/IJob";
 export interface IAction {
   type: ActionType;
   payload: string | IJob[];
-
 }
 
 export enum ActionType {
   LOADED,
-  SEARCHED 
+  SEARCHED
 }
-
 
 export const JobReducer = (
   jobs: IJob[],
@@ -24,7 +22,6 @@ export const JobReducer = (
     }
 
     case ActionType.SEARCHED: {
-
       return Array.isArray(action.payload) ? action.payload : JSON.parse(action.payload as string);
     }
 

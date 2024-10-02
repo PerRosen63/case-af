@@ -15,7 +15,7 @@ export const SearchJob = () => {
 
     try {
       const jobs = await getJobsBySearch(searchTerm);
-      dispatch({ type: ActionType.SEARCHED, payload: jobs }); 
+      dispatch({ type: ActionType.SEARCHED, payload: jobs });
     } catch (error) {
       console.error("Error searching jobs:", error);
     }
