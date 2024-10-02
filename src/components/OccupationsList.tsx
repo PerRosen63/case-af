@@ -40,16 +40,9 @@ export const OccupationsList = () => {
         <ul className="occupation-group">
           {occupationsGroup.map((occupationGroup) => (
             <li className="occupation-group-item" key={occupationGroup.id}>
-              <DigiFormCheckbox afLabel="Välj alla"></DigiFormCheckbox>
               <DigiFormFilter
                 afFilterButtonText={occupationGroup.preferred_label}
                 afSubmitButtonText="Filtrera"
-                afListItems={occupationGroup.narrower.map(
-                  (narrowerOccupation) => ({
-                    id: narrowerOccupation.id,
-                    label: narrowerOccupation.preferred_label,
-                  })
-                )}
                 afCheckItems={selectedNarrower[occupationGroup.id] || []} // Set initial checked items
                 onAfChangeFilter={(e) =>
                   console.log(e.detail.id, e.detail.isChecked)
@@ -65,9 +58,25 @@ export const OccupationsList = () => {
                     e.detail.checked
                   )
                 }
-                //afName={"Yrken"}
+                afName={"Yrken"}
                 autoFocus
-              ></DigiFormFilter>
+                //afAlignRight
+              >
+                <DigiFormCheckbox
+                  afLabel="Välj alla"
+                  onChange={(e) => {
+                    e.stopPropagation();
+                  }}
+                ></DigiFormCheckbox>
+                {/* Map out the narrowerOccupation checkboxes */}
+                {occupationGroup.narrower.map((narrowerOccupation) => (
+                  <DigiFormCheckbox
+                    key={narrowerOccupation.id}
+                    afLabel={narrowerOccupation.preferred_label}
+                    // ... any other DigiFormCheckbox props you need ...
+                  ></DigiFormCheckbox>
+                ))}
+              </DigiFormFilter>
             </li>
           ))}
         </ul>
