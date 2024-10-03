@@ -50,8 +50,9 @@ export const Layout = () => {
       </main>
 
       {/* ----------------Footer---------------- */}
-      <DigiFooter afVariation={FooterVariation.SMALL}>
+      <DigiFooter afVariation={FooterVariation.LARGE}>
         <div slot="content-top">
+          {/* Kolumn 1 */}
           <div>
             <DigiFooterCard afType={FooterCardVariation.ICON}>
               <ul>
@@ -82,24 +83,45 @@ export const Layout = () => {
               </ul>
             </DigiFooterCard>
           </div>
+
+          {/* Kolumn 2 */}
           <div>
             <DigiFooterCard afType={FooterCardVariation.BORDER}>
               <a href="#">Om tjänsten</a>
               <p>Systemversion: 1.4.0 <br /> Ansvarig: Jenny Svensson</p>
             </DigiFooterCard>
           </div>
+
+          {/* Kolumn 3 */}
           <div>
             <DigiFooterCard afType={FooterCardVariation.BORDER}>
               <a href="#">Kontakta serviccenter</a>
               <p>Telefon: 0771-60 0001 <br /> Öppettider: Vardagar 08:00-16:30</p>
             </DigiFooterCard>
           </div>
+
+          {/* Extra kolumner för fler länkar */}
+          <div>
+            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+              <a href="#">För utvecklare</a>
+              <p>Design tokens, komponenter och mer.</p>
+            </DigiFooterCard>
+          </div>
+
+          <div>
+            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+              <a href="#">Karriär</a>
+              <p>Jobba hos oss.</p>
+            </DigiFooterCard>
+          </div>
         </div>
+
         <div slot="content-bottom-left">
           <Link to="/">
             <DigiLogo afVariation={LogoVariation.LARGE} afColor={LogoColor.SECONDARY}></DigiLogo>
           </Link>
         </div>
+
         <div slot="content-bottom-right">
           <p>Följ oss på</p>
           <a href="#">Facebook</a>
