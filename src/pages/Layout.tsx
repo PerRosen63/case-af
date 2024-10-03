@@ -122,7 +122,7 @@ export const Layout = () => {
 
         <div slot="content-bottom-left">
           <Link to="/">
-          <img src={logoDark} alt="Jobbhjälparnas logo" className="logo-light" />
+          <img src={logoDark} alt="Jobbhjälparnas logo" className="logo-dark" />
             <DigiLogo afVariation={LogoVariation.LARGE} afColor={LogoColor.SECONDARY}>
               
             </DigiLogo>
