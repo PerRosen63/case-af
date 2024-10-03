@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { DigiHeader, DigiFooter, DigiIconBellFilled, DigiHeaderNotification, DigiHeaderAvatar, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiIconAccessibilityUniversal, DigiIconSign, DigiIconGlobe, DigiIconEnvelope, DigiFooterCard, DigiLogo } from '@digi/arbetsformedlingen-react';
 import { FooterVariation, FooterCardVariation, LogoVariation, LogoColor } from '@digi/arbetsformedlingen';
+import logoLight from '../assets/logo/logo-light.jpeg';
 
 export const Layout = () => {
   return (
@@ -12,7 +13,7 @@ export const Layout = () => {
         afMenuButtonText="Meny"
       >
         <a slot="header-logo" aria-label="Designsystemets startsida" href="/" className="digi-logo-svg">
-          <img src="/assets/logo/logo-light.jpeg" alt="custom logo" />
+          <img src={logoLight} alt="Jobbhjälparnas logo" className="logo-light" />
         </a>
         <div slot="header-content">
           <DigiHeaderNotification afNotificationAmount={8}>
@@ -52,7 +53,7 @@ export const Layout = () => {
       </main>
 
       {/* ----------------Footer---------------- */}
-      <DigiFooter afVariation={FooterVariation.LARGE}>
+      <DigiFooter afVariation={FooterVariation.LARGE} class="footer">
         <div slot="content-top">
           {/* Kolumn 1 */}
           <div>
@@ -120,7 +121,9 @@ export const Layout = () => {
 
         <div slot="content-bottom-left">
           <Link to="/">
-            <DigiLogo afVariation={LogoVariation.LARGE} afColor={LogoColor.SECONDARY}></DigiLogo>
+            <DigiLogo afVariation={LogoVariation.LARGE} afColor={LogoColor.SECONDARY}>
+              <a src={logoLight} className="logo-light" />
+            </DigiLogo>
           </Link>
         </div>
 

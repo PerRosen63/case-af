@@ -22,6 +22,8 @@
   --digi--global--color--cta--hover--base: #61778f;
   --digi--global--color--cta--visited--base: #7b263d;
   --digi--global--color--neutral--grayscale--base: #fafafa;
+
+  
 }
 
 /* --------------------- Common css -------------------- */
@@ -40,8 +42,17 @@
   display: none;
 }
 
+.logo-light {
+  width: 250px;
+  height: auto;
+}
+
 
 /*  -----------------footer-----------------------------  */
+
+.footer {
+  --digi--color--background--inverted-1: #887766;
+}
 
 .footer-card {
   text-align: left;
