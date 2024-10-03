@@ -15,7 +15,7 @@ export const Pagination = ({
     <DigiNavigationPagination
       afTotalPages={totalPages}
       afInitActivePage={currentPage}
-      onAfPageChange={(newPage) => onPageChange(newPage)}
+      onAfOnPageChange={(newPage) => onPageChange(newPage)}
     />
   );
 };

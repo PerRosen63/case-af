@@ -4,20 +4,21 @@ import { useState, useContext } from "react";
 import { JobContext } from "../contexts/JobContext";
 import { getJobsBySearch } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
-import { JobsPresentation } from "./JobsPresentation";
-import { Pagination } from "./Pagination";
+import { DigiNavigationPaginationCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
+
+interface SearchJobProps {
+  setTotalPages: (totalPages: number) => void;
+  setCurrentPage: (currentPage: number) => void;
+}
 
 export const SearchJob = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
-
   const { dispatch } = useContext(JobContext);
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim() === "") return;
-    await fetchJobs(searchTerm, 1);  // Hämta första sidan med jobb
+    await fetchJobs(searchTerm, 1);
   };
 
   const fetchJobs = async (term: string, page: number) => {
@@ -25,14 +26,16 @@ export const SearchJob = () => {
       const jobs = await getJobsBySearch(term, page);
       dispatch({ type: ActionType.SEARCHED, payload: jobs });
       setCurrentPage(page);
+       // Sätt totalPages till ett värde baserat på API-responsen om tillgängligt
+      // t.ex. setTotalPages(response.totalPages) om API:t stödjer det.
 
-      setTotalPages(3);
+      setTotalPages(3); // Sätt exempelvärde tills API-data är tydlig
     } catch (error) {
       console.error("Error fetching jobs:", error);
     }
   };
-
-  const handlePageChange = (newPage: number) => {
+  const handlePageChange = (event: DigiNavigationPaginationCustomEvent<number>) => {
+    const newPage = event.detail;  // Extrahera sidnumret från eventet
     fetchJobs(searchTerm, newPage);
   };
 
@@ -50,15 +53,6 @@ export const SearchJob = () => {
           />
         </div>
       </form>
-      <JobsPresentation currentPage={0} totalPages={0} onPageChange={function (newPage: number): void {
-        throw new Error("Function not implemented.");
-      } } />
-      
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
     </>
   );
 };

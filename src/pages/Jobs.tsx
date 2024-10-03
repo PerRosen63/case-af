@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { FilterBtnYrke } from "../components/FilterBtnYrke";
 import { JobsPresentation } from "../components/JobsPresentation";
 import { JobContext } from "../contexts/JobContext";
-import { OccupationsList } from "../components/OccupationsList";
 import { SearchJob } from "../components/SearchJob";
 
 export const Jobs = () => {
@@ -20,12 +19,13 @@ export const Jobs = () => {
       />
 
       </div>
+      <JobsPresentation currentPage={0} totalPages={0} onPageChange={function (newPage: number): void {
+        throw new Error("Function not implemented.");
+      } } />
 
-      {/* <OccupationsList></OccupationsList> */}
 
 
-
-      <OccupationsList selectedOccupations={selectedOccupations} />
+      {/* <OccupationsList selectedOccupations={selectedOccupations} />*/}
     </div>
   );
 };
