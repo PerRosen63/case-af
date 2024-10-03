@@ -2,6 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import { DigiHeader, DigiFooter, DigiIconBellFilled, DigiHeaderNotification, DigiHeaderAvatar, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiIconAccessibilityUniversal, DigiIconSign, DigiIconGlobe, DigiIconEnvelope, DigiFooterCard, DigiLogo } from '@digi/arbetsformedlingen-react';
 import { FooterVariation, FooterCardVariation, LogoVariation, LogoColor } from '@digi/arbetsformedlingen';
 import logoLight from '../assets/logo/logo-light.jpeg';
+import logoDark from '../assets/logo/logo-dark.jpeg';
 
 export const Layout = () => {
   return (
@@ -12,7 +13,7 @@ export const Layout = () => {
         afHideSystemName={false}
         afMenuButtonText="Meny"
       >
-        <a slot="header-logo" aria-label="Designsystemets startsida" href="/" className="digi-logo-svg">
+        <a slot="header-logo" aria-label="Designsystemets startsida" href="/">
           <img src={logoLight} alt="Jobbhjälparnas logo" className="logo-light" />
         </a>
         <div slot="header-content">
@@ -121,8 +122,9 @@ export const Layout = () => {
 
         <div slot="content-bottom-left">
           <Link to="/">
+          <img src={logoDark} alt="Jobbhjälparnas logo" className="logo-light" />
             <DigiLogo afVariation={LogoVariation.LARGE} afColor={LogoColor.SECONDARY}>
-              <a src={logoLight} className="logo-light" />
+              
             </DigiLogo>
           </Link>
         </div>
