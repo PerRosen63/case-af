@@ -16,6 +16,8 @@ export const SearchJob = () => {
     try {
       const jobs = await getJobsBySearch(searchTerm);
       dispatch({ type: ActionType.SEARCHED, payload: jobs });
+      setSearchTerm(""); 
+      
     } catch (error) {
       console.error("Error searching jobs:", error);
     }
@@ -31,6 +33,7 @@ export const SearchJob = () => {
             afType={FormInputType.SEARCH}	
             afButtonText="Sök"
             onAfOnChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
           />
         </div>
       </form>
