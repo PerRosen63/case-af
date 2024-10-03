@@ -1,5 +1,5 @@
 import { FormInputSearchVariation, FormInputType } from "@digi/arbetsformedlingen";
-import { DigiFormInputSearch } from "@digi/arbetsformedlingen-react";
+import { DigiFormInputSearch, DigiNavigationPagination } from "@digi/arbetsformedlingen-react";
 import { useState, useContext } from "react";
 import { JobContext } from "../contexts/JobContext";
 import { getJobsBySearch } from "../service/jobService";
@@ -37,6 +37,11 @@ export const SearchJob = () => {
           />
         </div>
       </form>
+      <DigiNavigationPagination
+        afTotalPages={10}
+	      afInitActivePage={1}
+      >
+    </DigiNavigationPagination>
     </>
   );
 };
