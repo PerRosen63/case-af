@@ -18,9 +18,7 @@ export const Jobs = () => {
         selectedOccupations={selectedOccupations}
         setSelectedOccupations={setSelectedOccupations}
       />
-        <h1>Jobs</h1>
-        <p>Antal jobb: {jobs.length}</p>
-        <JobsPresentation />
+
       </div>
 
       {/* <OccupationsList></OccupationsList> */}

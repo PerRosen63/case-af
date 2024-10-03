@@ -11,11 +11,13 @@ export const getJobs = async (): Promise<IJob[]> => {
     return [];
   }
 };
-export const getJobsBySearch = async (searchTerm: string): Promise<IJob[]> => {
+export const getJobsBySearch = async (searchTerm: string, page: number = 1): Promise<IJob[]> => {
   try {
-    const endpoint = `?q=${encodeURIComponent(searchTerm)}`;
+    const offset = (page - 1) * 10;
+    const endpoint = `?q=${encodeURIComponent(searchTerm)}&offset=${offset}&limit=10`;
     const jobs = await get<IJob>(endpoint);
-    console.log(`Jobs fetched for search term "${searchTerm}":`, jobs);
+
+    console.log(`Jobs fetched for search term "${searchTerm}, page ${page}":`, jobs);
     return jobs;
   } catch (error) {
     console.error("Error fetching jobs by search:", error);
