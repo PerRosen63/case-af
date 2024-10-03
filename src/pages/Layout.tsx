@@ -11,7 +11,9 @@ export const Layout = () => {
         afHideSystemName={false}
         afMenuButtonText="Meny"
       >
-        <a slot="header-logo" aria-label="Designsystemets startsida" href="/"></a>
+        <a slot="header-logo" aria-label="Designsystemets startsida" href="/" className="digi-logo-svg">
+          <img src="/assets/logo/logo-light.jpeg" alt="custom logo" />
+        </a>
         <div slot="header-content">
           <DigiHeaderNotification afNotificationAmount={8}>
             <a href="/">
@@ -86,7 +88,7 @@ export const Layout = () => {
 
           {/* Kolumn 2 */}
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
               <a href="#">Om tjänsten</a>
               <p>Systemversion: 1.4.0 <br /> Ansvarig: Jenny Svensson</p>
             </DigiFooterCard>
@@ -94,22 +96,22 @@ export const Layout = () => {
 
           {/* Kolumn 3 */}
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
-              <a href="#">Kontakta serviccenter</a>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
+              <a href="#">Kontakta servicecenter</a>
               <p>Telefon: 0771-60 0001 <br /> Öppettider: Vardagar 08:00-16:30</p>
             </DigiFooterCard>
           </div>
 
           {/* Extra kolumner för fler länkar */}
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
               <a href="#">För utvecklare</a>
               <p>Design tokens, komponenter och mer.</p>
             </DigiFooterCard>
           </div>
 
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
               <a href="#">Karriär</a>
               <p>Jobba hos oss.</p>
             </DigiFooterCard>
