@@ -19,7 +19,7 @@ export const Jobs = () => {
       />
 
       </div>
-      <JobsPresentation currentPage={0} totalPages={0} onPageChange={function (newPage: number): void {
+      <JobsPresentation currentPage={1} totalPages={10} onPageChange={function (newPage: number): void {
         throw new Error("Function not implemented.");
       } } />
 
