@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 import { IOccupation } from "../models/IOccupation";
 import { getOccupation } from "../service/taxonomyService";
 import {
-  DigiFormCheckbox,
+  //DigiFormCheckbox,
   DigiFormFilter,
 } from "@digi/arbetsformedlingen-react";
+import { FormFilterItem } from "@digi/arbetsformedlingen";
+
+interface ExtendedFormFilterItem extends FormFilterItem {
+  isSelectAll?: boolean; // Optional property
+}
 
 export const OccupationsList = () => {
   const [occupationsGroup, setOccupationsGruop] = useState<IOccupation[]>([]);
@@ -65,14 +70,24 @@ export const OccupationsList = () => {
 
   // Handle individual checkbox changes within the filter
   const handleIndividualCheckboxChange = (id: string, isChecked: boolean) => {
-    console.log("handleIndividualCheckboxChange called", id, isChecked); // Log at the beginning
+    console.log("handleIndividualCheckboxChange called", id, isChecked);
 
-    // Update selectedNarrower based on individual checkbox changes
-    setSelectedNarrower((prevSelected) => {
-      const updatedSelected = { ...prevSelected };
-      const groupIds = Object.keys(updatedSelected);
+    if (id.startsWith("selectAll-")) {
+      const groupId = id.replace("selectAll-", ""); // Extract groupId from ID
+      handleSelectAllChange(groupId, isChecked);
+    } else {
+      // Extract groupId from the individual checkbox ID (assuming a pattern like 'checkbox-{groupId}')
+      const groupId = id.replace("checkbox-", ""); // Adjust this based on your ID pattern
+      // Update selectedNarrower based on individual checkbox changes
+      setSelectedNarrower((prevSelected) => {
+        const updatedSelected = { ...prevSelected };
 
-      groupIds.forEach((groupId) => {
+        // Check if the groupId exists in updatedSelected
+        if (!updatedSelected[groupId]) {
+          updatedSelected[groupId] = []; // Create an empty array if it doesn't
+        }
+
+        // Now you can safely access updatedSelected[groupId]
         if (isChecked) {
           // Add the ID if it's not already in the array
           if (!updatedSelected[groupId].includes(id)) {
@@ -84,11 +99,12 @@ export const OccupationsList = () => {
             (itemId) => itemId !== id
           );
         }
-      });
 
-      return updatedSelected;
-    });
+        return updatedSelected;
+      });
+    }
   };
+
   useEffect(() => {
     console.log("selectAllStatus updated:", selectAllStatus);
   }, [selectAllStatus]);
@@ -107,39 +123,42 @@ export const OccupationsList = () => {
               <DigiFormFilter
                 afFilterButtonText={occupationGroup.preferred_label}
                 afSubmitButtonText="Filtrera"
-                //afCheckItems={selectedNarrower[occupationGroup.id] || []} // Set initial checked items
-                onAfResetFilter={() => console.log("reset filter")}
-                onAfSubmitFilter={(e) =>
-                  handleFilterChange(occupationGroup.id, e.detail.checked)
-                }
-                onAfCloseFilter={(e) =>
-                  console.log(
-                    "submit filter",
-                    e.detail.listItems,
-                    e.detail.checked
-                  )
-                }
-                afName={"Yrken"}
-                autoFocus
                 onAfChangeFilter={(e) => {
                   handleIndividualCheckboxChange(
                     e.detail.id,
                     e.detail.isChecked
                   );
                 }}
+                onAfSubmitFilter={(e) =>
+                  handleFilterChange(occupationGroup.id, e.detail.checked)
+                }
+                afListItems={[
+                  // "Select All" checkbox as the first item in the array
+                  {
+                    id: `selectAll-${occupationGroup.id}`, // Unique ID for "Select All"
+                    label: "Välj alla",
+                    isSelectAll: true,
+                  } as ExtendedFormFilterItem,
+                  // ... other filter items from the map ...
+                  ...occupationGroup.narrower.map((narrowerOccupation) => ({
+                    id: narrowerOccupation.id,
+                    label: narrowerOccupation.preferred_label,
+                  })),
+                ]}
+                // Pass selectedNarrower to afCheckItems
+                afCheckItems={selectedNarrower[occupationGroup.id] || []}
               >
-                <DigiFormCheckbox
+                {/* <DigiFormCheckbox
                   afLabel="Välj alla"
                   afChecked={selectAllStatus[occupationGroup.id] || false} // Assuming a "checked" prop
-                  onChange={(e) => {
+                  onAfOnChange={(e) => {
                     console.log("Event object:", e);
                     console.log("e.target.checked:", e.target.checked);
                     console.log("e.target.checked:", occupationGroup.id);
                     handleSelectAllChange(occupationGroup.id, e.target.checked);
                   }}
-                ></DigiFormCheckbox>
-                {/* Map out the narrowerOccupation checkboxes */}
-                {occupationGroup.narrower.map((narrowerOccupation) => (
+                ></DigiFormCheckbox> */}
+                {/* {occupationGroup.narrower.map((narrowerOccupation) => (
                   <DigiFormCheckbox
                     key={narrowerOccupation.id}
                     afLabel={narrowerOccupation.preferred_label}
@@ -148,8 +167,14 @@ export const OccupationsList = () => {
                         narrowerOccupation.id
                       ) || false
                     }
+                    onAfOnChange={(e) => {
+                      handleIndividualCheckboxChange(
+                        narrowerOccupation.id,
+                        e.target.checked
+                      );
+                    }}
                   ></DigiFormCheckbox>
-                ))}
+                ))} */}
               </DigiFormFilter>
             </li>
           ))}
