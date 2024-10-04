@@ -10,7 +10,7 @@ export const Job = () => {
   const selectedJob = jobs.find((job) => job.id === id);
 
   if (!selectedJob) {
-    return <p>Jobb ej hittat.</p>;
+    return <p>Här hittar du inget jobb.</p>;
   }
 
   return (

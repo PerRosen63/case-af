@@ -1,5 +1,6 @@
-import { TypographyVariation } from "@digi/arbetsformedlingen";
-import { DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
+import { ButtonVariation, TypographyVariation } from "@digi/arbetsformedlingen";
+import { DigiButton, DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -10,6 +11,13 @@ export const Home = () => {
           <p>
             Här kan du hitta och söka efter de senaste jobben inom olika branscher.
           </p>
+
+          <Link to="/job/1">
+          <DigiButton afVariation={ButtonVariation.PRIMARY}>
+              Hitta jobb
+            </DigiButton>
+          </Link>
+
         </DigiLayoutContainer>
 
         <DigiLayoutContainer afVerticalPadding>
