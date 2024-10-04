@@ -45,7 +45,7 @@ export const JobsPresentation = ({
           totalPages={totalPages}
           onPageChange={onPageChange}
           />
-      </div>
+    </div>
         )}
     </>
   );

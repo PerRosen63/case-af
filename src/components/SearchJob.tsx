@@ -26,19 +26,26 @@ export const SearchJob = () => {
       const jobs = await getJobsBySearch(term, page);
       dispatch({ type: ActionType.SEARCHED, payload: jobs });
       setCurrentPage(page);
-       // Sätt totalPages till ett värde baserat på API-responsen om tillgängligt
-      // t.ex. setTotalPages(response.totalPages) om API:t stödjer det.
 
-      setTotalPages(3); // Sätt exempelvärde tills API-data är tydlig
+      setTotalPages(3);
     } catch (error) {
       console.error("Error fetching jobs:", error);
     }
   };
+  
   const handlePageChange = (event: DigiNavigationPaginationCustomEvent<number>) => {
-    const newPage = event.detail;  // Extrahera sidnumret från eventet
+    const newPage = event.detail; 
     fetchJobs(searchTerm, newPage);
   };
-
+  
+  function setCurrentPage(page: number) {
+    throw new Error("Function not implemented.");
+  }
+  
+  function setTotalPages(arg0: number) {
+    throw new Error("Function not implemented.");
+  }
+  
   return (
     <>
       <form onSubmit={handleSearch}>
@@ -56,3 +63,4 @@ export const SearchJob = () => {
     </>
   );
 };
+

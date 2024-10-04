@@ -4,6 +4,7 @@ const BASE_URL = "https://jobsearch.api.jobtechdev.se/search";
 
 interface IApiResponse<T> {
   hits: T[];
+  totalHits: number;
 }
 
 export const get = async <T>(endpoint: string): Promise<T[]> => {

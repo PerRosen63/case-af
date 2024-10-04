@@ -1,4 +1,5 @@
 import { DigiNavigationPagination } from "@digi/arbetsformedlingen-react";
+import { DigiNavigationPaginationCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
 
 interface PaginationProps {
   currentPage: number;
@@ -15,7 +16,10 @@ export const Pagination = ({
     <DigiNavigationPagination
       afTotalPages={totalPages}
       afInitActivePage={currentPage}
-      onAfOnPageChange={(newPage) => onPageChange(newPage)}
+      onAfOnPageChange={(event: DigiNavigationPaginationCustomEvent<number>) => {
+        const newPage = event.detail;
+        onPageChange(newPage);
+      }}
     />
   );
 };
