@@ -1,33 +1,37 @@
-import { DigiLayoutContainer } from "@digi/arbetsformedlingen-react";
+import { TypographyVariation } from "@digi/arbetsformedlingen";
+import { DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
 
 export const Home = () => {
   return (
-    <main>
-<DigiLayoutContainer afVerticalPadding>
-	<h2>Välkommen till vår Jobbplattform</h2>
-	<p>
-  Här kan du hitta och söka efter de senaste jobben inom olika branscher.
-	</p>
-</DigiLayoutContainer>
+    <DigiTypography afVariation={TypographyVariation.SMALL}>
+      <main>
+        <DigiLayoutContainer afVerticalPadding>
+          <h2>Välkommen till vår Jobbplattform</h2>
+          <p>
+            Här kan du hitta och söka efter de senaste jobben inom olika branscher.
+          </p>
+        </DigiLayoutContainer>
 
-<DigiLayoutContainer afVerticalPadding>
-  <h2>Sök jobb</h2>
-  <p>
-    Upptäck olika jobbannonser med vår kraftfulla sökfunktion och hitta ditt drömjobb
-    snabbt och enkelt.
-  </p>
-</DigiLayoutContainer>
+        <DigiLayoutContainer afVerticalPadding>
+          <h2>Sök jobb</h2>
+          <p>
+            Upptäck olika jobbannonser med vår kraftfulla sökfunktion och hitta ditt drömjobb
+            snabbt och enkelt.
+          </p>
+        </DigiLayoutContainer>
 
-<DigiLayoutContainer afVerticalPadding>
-  <h2>Skapa profil</h2>
-  <p>
-    Skapa en profil och låt arbetsgivare hitta dig genom vår plattform. Det har aldrig varit
-    enklare att bli synlig för företag.
-  </p>
-</DigiLayoutContainer>
-    </main>
+        <DigiLayoutContainer afVerticalPadding>
+          <h2>Skapa profil</h2>
+          <p>
+            Skapa en profil och låt arbetsgivare hitta dig genom vår plattform. Det har aldrig varit
+            enklare att bli synlig för företag.
+          </p>
+        </DigiLayoutContainer>
+      </main>
+    </DigiTypography>
   );
 };
+
 
 /* import { DigiLayoutContainer } from "@digi/arbetsformedlingen-react";
 
