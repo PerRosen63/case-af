@@ -1,6 +1,9 @@
 import { Outlet, Link } from "react-router-dom";
 import { DigiHeader, DigiFooter, DigiIconBellFilled, DigiHeaderNotification, DigiHeaderAvatar, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiIconAccessibilityUniversal, DigiIconSign, DigiIconGlobe, DigiIconEnvelope, DigiFooterCard, DigiLogo } from '@digi/arbetsformedlingen-react';
 import { FooterVariation, FooterCardVariation, LogoVariation, LogoColor } from '@digi/arbetsformedlingen';
+import logoLightNoText from '../assets/logo/logo-light-no-text.jpeg';
+import logoLight from '../assets/logo/logo-light.jpeg';
+import logoDark from '../assets/logo/logo-dark.jpeg';
 
 export const Layout = () => {
   return (
@@ -11,7 +14,10 @@ export const Layout = () => {
         afHideSystemName={false}
         afMenuButtonText="Meny"
       >
-        <a slot="header-logo" aria-label="Designsystemets startsida" href="/"></a>
+        <a slot="header-logo" aria-label="Designsystemets startsida" href="/">
+          <img src={logoLightNoText} alt="Jobbhjälparnas logo" className="logo-light-no-text" />
+          <img src={logoLight} alt="Jobbhjälparnas logo" className="logo-light" />
+        </a>
         <div slot="header-content">
           <DigiHeaderNotification afNotificationAmount={8}>
             <a href="/">
@@ -50,7 +56,7 @@ export const Layout = () => {
       </main>
 
       {/* ----------------Footer---------------- */}
-      <DigiFooter afVariation={FooterVariation.LARGE}>
+      <DigiFooter afVariation={FooterVariation.LARGE} class="footer">
         <div slot="content-top">
           {/* Kolumn 1 */}
           <div>
@@ -86,7 +92,7 @@ export const Layout = () => {
 
           {/* Kolumn 2 */}
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
               <a href="#">Om tjänsten</a>
               <p>Systemversion: 1.4.0 <br /> Ansvarig: Jenny Svensson</p>
             </DigiFooterCard>
@@ -94,22 +100,22 @@ export const Layout = () => {
 
           {/* Kolumn 3 */}
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
-              <a href="#">Kontakta serviccenter</a>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
+              <a href="#">Kontakta servicecenter</a>
               <p>Telefon: 0771-60 0001 <br /> Öppettider: Vardagar 08:00-16:30</p>
             </DigiFooterCard>
           </div>
 
           {/* Extra kolumner för fler länkar */}
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
               <a href="#">För utvecklare</a>
               <p>Design tokens, komponenter och mer.</p>
             </DigiFooterCard>
           </div>
 
           <div>
-            <DigiFooterCard afType={FooterCardVariation.BORDER}>
+            <DigiFooterCard afType={FooterCardVariation.BORDER} class="footer-card">
               <a href="#">Karriär</a>
               <p>Jobba hos oss.</p>
             </DigiFooterCard>
@@ -118,7 +124,10 @@ export const Layout = () => {
 
         <div slot="content-bottom-left">
           <Link to="/">
-            <DigiLogo afVariation={LogoVariation.LARGE} afColor={LogoColor.SECONDARY}></DigiLogo>
+          <img src={logoDark} alt="Jobbhjälparnas logo" className="logo-dark" />
+            <DigiLogo afVariation={LogoVariation.LARGE} afColor={LogoColor.SECONDARY}>
+              
+            </DigiLogo>
           </Link>
         </div>
 

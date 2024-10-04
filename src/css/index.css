@@ -7,8 +7,8 @@
 @import url('desktopLarge.css') screen and (min-width: 992px);
 
 
- design system override overview
-#root {   
+/*  Design system override. Changes colors globally */
+:root {   
   --digi--global--color--profile--blue--dark: #141010;
   --digi--global--color--profile--blue--base: #443131;
   --digi--global--color--profile--blue--light: #5a4b42;
@@ -21,15 +21,11 @@
   --digi--global--color--cta--link--base: #4e6172;
   --digi--global--color--cta--hover--base: #61778f;
   --digi--global--color--cta--visited--base: #7b263d;
-
-  --digi--color--text--link-visited: #000000;
-
   --digi--global--color--neutral--grayscale--base: #fafafa;
-
-  --digi--color--text--inverted: #000000; 
 }
 
 /* --------------------- Common css -------------------- */
+
 .filter-buttons {
   display: flex;
   flex-direction: row;
@@ -38,3 +34,23 @@
 .search-input {
   width: 350px;
 }
+
+
+/*  ------------------header----------------------------  */
+
+.sc-digi-logo-s {
+  display: none;
+}
+
+.logo-dark {
+  width: 250px;
+  height: auto;
+}
+
+
+/*  -----------------footer-----------------------------  */
+
+.footer-card {
+  text-align: left;
+}
+
