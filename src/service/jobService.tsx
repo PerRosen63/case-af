@@ -13,8 +13,8 @@ export const getJobs = async (): Promise<IJob[]> => {
 };
 export const getJobsBySearch = async (searchTerm: string, page: number = 1): Promise<IJob[]> => {
   try {
-    const offset = (page - 1) * 10;
-    const endpoint = `?q=${encodeURIComponent(searchTerm)}&offset=${offset}&limit=10`;
+    const offset = (page - 1) * 5;
+    const endpoint = `?q=${encodeURIComponent(searchTerm)}&offset=${offset}&limit=100`;
     const jobs = await get<IJob>(endpoint);
 
     console.log(`Jobs fetched for search term "${searchTerm}, page ${page}":`, jobs);

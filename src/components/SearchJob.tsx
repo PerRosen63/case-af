@@ -4,12 +4,12 @@ import { useState, useContext } from "react";
 import { JobContext } from "../contexts/JobContext";
 import { getJobsBySearch } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
-import { DigiNavigationPaginationCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
 
+/*
 interface SearchJobProps {
   setTotalPages: (totalPages: number) => void;
   setCurrentPage: (currentPage: number) => void;
-}
+}*/
 
 export const SearchJob = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -32,11 +32,11 @@ export const SearchJob = () => {
       console.error("Error fetching jobs:", error);
     }
   };
-  
+  /*
   const handlePageChange = (event: DigiNavigationPaginationCustomEvent<number>) => {
     const newPage = event.detail; 
     fetchJobs(searchTerm, newPage);
-  };
+  };*/
   
   function setCurrentPage(page: number) {
     throw new Error("Function not implemented.");
@@ -44,6 +44,7 @@ export const SearchJob = () => {
   
   function setTotalPages(arg0: number) {
     throw new Error("Function not implemented.");
+
   }
   
   return (
