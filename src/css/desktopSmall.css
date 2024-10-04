@@ -1,9 +1,12 @@
 /* >576 */
-/*
-main {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 24px;
-    margin: 16px;
-  }
-    */
+
+.logo-light-no-text {
+  display: none;
+}
+
+.logo-light {
+  display: block;
+  width: 256px;
+  height: auto;
+  margin-bottom: 25px;
+}

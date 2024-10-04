@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { DigiHeader, DigiFooter, DigiIconBellFilled, DigiHeaderNotification, DigiHeaderAvatar, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiIconAccessibilityUniversal, DigiIconSign, DigiIconGlobe, DigiIconEnvelope, DigiFooterCard, DigiLogo } from '@digi/arbetsformedlingen-react';
 import { FooterVariation, FooterCardVariation, LogoVariation, LogoColor } from '@digi/arbetsformedlingen';
+import logoLightNoText from '../assets/logo/logo-light-no-text.jpeg';
 import logoLight from '../assets/logo/logo-light.jpeg';
 import logoDark from '../assets/logo/logo-dark.jpeg';
 
@@ -14,6 +15,7 @@ export const Layout = () => {
         afMenuButtonText="Meny"
       >
         <a slot="header-logo" aria-label="Designsystemets startsida" href="/">
+          <img src={logoLightNoText} alt="Jobbhjälparnas logo" className="logo-light-no-text" />
           <img src={logoLight} alt="Jobbhjälparnas logo" className="logo-light" />
         </a>
         <div slot="header-content">

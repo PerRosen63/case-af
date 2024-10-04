@@ -1,11 +1,9 @@
+.logo-light-no-text {
+  width: 40px;
+  height: 40px;
+}
 
-main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin: 16px;
-  }
-
-
-
+.logo-light {
+  display: none;
+}
 

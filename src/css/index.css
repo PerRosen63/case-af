@@ -7,7 +7,7 @@
 @import url('desktopLarge.css') screen and (min-width: 992px);
 
 
-/*  Design system override. Changes the colors globally */
+/*  Design system override. Changes colors globally */
 :root {   
   --digi--global--color--profile--blue--dark: #141010;
   --digi--global--color--profile--blue--base: #443131;
@@ -22,11 +22,10 @@
   --digi--global--color--cta--hover--base: #61778f;
   --digi--global--color--cta--visited--base: #7b263d;
   --digi--global--color--neutral--grayscale--base: #fafafa;
-
-  
 }
 
 /* --------------------- Common css -------------------- */
+
 .filter-buttons {
   display: flex;
   flex-direction: row;
@@ -36,15 +35,11 @@
   width: 350px;
 }
 
+
 /*  ------------------header----------------------------  */
 
 .sc-digi-logo-s {
   display: none;
-}
-
-.logo-light {
-  width: 250px;
-  height: auto;
 }
 
 .logo-dark {
@@ -54,7 +49,6 @@
 
 
 /*  -----------------footer-----------------------------  */
-
 
 .footer-card {
   text-align: left;
