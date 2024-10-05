@@ -4,49 +4,42 @@ import { useState, useContext } from "react";
 import { JobContext } from "../contexts/JobContext";
 import { getJobsBySearch } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
-
-/*
-interface SearchJobProps {
-  setTotalPages: (totalPages: number) => void;
-  setCurrentPage: (currentPage: number) => void;
-}*/
+import { Pagination } from "./Pagination"; // Lägg till pagineringen här
 
 export const SearchJob = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1); // Initialt 1 sida
   const { dispatch } = useContext(JobContext);
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchTerm.trim() === "") return;
-    await fetchJobs(searchTerm, 1);
-  };
-
+  // Funktion som hämtar jobb baserat på sökterm och sida
   const fetchJobs = async (term: string, page: number) => {
     try {
       const jobs = await getJobsBySearch(term, page);
       dispatch({ type: ActionType.SEARCHED, payload: jobs });
       setCurrentPage(page);
 
-      setTotalPages(3);
+      // Uppdatera det totala antalet sidor baserat på API-svaret (t.ex. via totalHits)
+      const totalHits = 100; // Exempelvärde, ersätt med ditt API-svar om det finns
+      const jobsPerPage = 5; // Antal jobb per sida
+      setTotalPages(Math.ceil(totalHits / jobsPerPage));
     } catch (error) {
       console.error("Error fetching jobs:", error);
     }
   };
-  /*
-  const handlePageChange = (event: DigiNavigationPaginationCustomEvent<number>) => {
-    const newPage = event.detail; 
-    fetchJobs(searchTerm, newPage);
-  };*/
-  
-  function setCurrentPage(page: number) {
-    throw new Error("Function not implemented.");
-  }
-  
-  function setTotalPages(arg0: number) {
-    throw new Error("Function not implemented.");
 
-  }
-  
+  // Hanterar när sökformuläret skickas
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim() === "") return;
+    await fetchJobs(searchTerm, 1); // Börja alltid på sida 1
+  };
+
+  // Hanterar sidbyte i pagineringen
+  const handlePageChange = (newPage: number) => {
+    fetchJobs(searchTerm, newPage); // Hämta resultat för den nya sidan
+  };
+
   return (
     <>
       <form onSubmit={handleSearch}>
@@ -54,14 +47,22 @@ export const SearchJob = () => {
           <DigiFormInputSearch
             afLabel="Sök jobb"
             afVariation={FormInputSearchVariation.MEDIUM}
-            afType={FormInputType.SEARCH}	
+            afType={FormInputType.SEARCH}
             afButtonText="Sök"
             onAfOnChange={(e) => setSearchTerm(e.target.value)}
             value={searchTerm}
           />
         </div>
       </form>
+
+      {/* Lägg till pagineringen */}
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </>
   );
 };
-
