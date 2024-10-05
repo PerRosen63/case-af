@@ -40,11 +40,11 @@ export const JobsPresentation = ({
               </li>
             ))}
           </ul>
-          <Pagination
+          {/* <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={onPageChange}
-          />
+          />*/}
     </div>
         )}
     </>

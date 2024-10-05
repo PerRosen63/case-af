@@ -3,7 +3,6 @@ import { FilterBtnYrke } from "../components/FilterBtnYrke";
 import { JobsPresentation } from "../components/JobsPresentation";
 import { JobContext } from "../contexts/JobContext";
 import { SearchJob } from "../components/SearchJob";
-import { Pagination } from "../components/Pagination";
 
 export const Jobs = () => {
   const { jobs } = useContext(JobContext);
@@ -23,7 +22,6 @@ export const Jobs = () => {
       <JobsPresentation currentPage={1} totalPages={10} onPageChange={function (newPage: number): void {
         throw new Error("Function not implemented.");
       } } />
-
 
 
 
