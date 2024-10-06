@@ -28,13 +28,11 @@ export const SearchJob = () => {
     }
   };
 
-
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim() === "") return;
     await fetchJobs(searchTerm, 1);
   };
-
 
   const handlePageChange = (newPage: number) => {
     fetchJobs(searchTerm, newPage);

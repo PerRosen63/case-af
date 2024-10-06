@@ -1,19 +1,7 @@
 import { useContext, useEffect } from "react";
 import { JobContext } from "../contexts/JobContext";
-import { Pagination } from "./Pagination";
 
-
-interface JobsPresentationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (newPage: number) => void;
-}
-
-export const JobsPresentation = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: JobsPresentationProps) => {
+export const JobsPresentation = () => {
 
   const { jobs } = useContext(JobContext);
 
