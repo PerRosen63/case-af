@@ -4,14 +4,14 @@ import { useState, useContext } from "react";
 import { JobContext } from "../contexts/JobContext";
 import { getJobsBySearch } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
-import { Pagination } from "./Pagination";
+import { JOBS_PER_PAGE, Pagination } from "./Pagination";
 
 export const SearchJob = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [activeSearchTerm, setActiveSearchTerm] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const { dispatch } = useContext(JobContext);
-
 
   const fetchJobs = async (term: string, page: number) => {
     try {
@@ -19,9 +19,8 @@ export const SearchJob = () => {
       dispatch({ type: ActionType.SEARCHED, payload: jobs });
       setCurrentPage(page);
 
-
       const totalHits = 100;
-      const jobsPerPage = 5;
+      const jobsPerPage = JOBS_PER_PAGE;
       setTotalPages(Math.ceil(totalHits / jobsPerPage));
     } catch (error) {
       console.error("Error fetching jobs:", error);
@@ -31,11 +30,15 @@ export const SearchJob = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim() === "") return;
+      setActiveSearchTerm(searchTerm);
+      setCurrentPage(1);
+
     await fetchJobs(searchTerm, 1);
+      setSearchTerm("");
   };
 
   const handlePageChange = (newPage: number) => {
-    fetchJobs(searchTerm, newPage);
+    fetchJobs(activeSearchTerm, newPage);
   };
 
   return (
@@ -52,7 +55,6 @@ export const SearchJob = () => {
           />
         </div>
       </form>
-
 
       {totalPages > 1 && (
         <Pagination

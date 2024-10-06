@@ -6,6 +6,7 @@ interface PaginationProps {
   totalPages: number;
   onPageChange: (newPage: number) => void;
 }
+export const JOBS_PER_PAGE = 5;
 
 export const Pagination = ({
   currentPage,
@@ -16,6 +17,7 @@ export const Pagination = ({
     const newPage = event.detail;
     onPageChange(newPage);
   };
+
 
   return (
     <DigiNavigationPagination
