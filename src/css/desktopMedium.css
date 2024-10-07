@@ -10,7 +10,10 @@
 
 .occupations-list-wrapper {
   max-width: 710px;
-  height: 95vh;
+  height: 100vh;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  box-shadow: 1px 1px 1px;
 }
 
 .list-header {
@@ -36,6 +39,7 @@
 
 .occupation-group {
   position: relative;
+  height: 85vh;
 }
 
 .occupation-group-item {
@@ -60,6 +64,6 @@
   position: absolute;
   left: 50%;
   top: 0;
-  height: 95vh;
+  height: 85vh;
   overflow-y: scroll;
 }

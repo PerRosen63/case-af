@@ -1,12 +1,14 @@
 import {
   DigiButton,
-  DigiExpandableAccordion,
-  DigiFormCheckbox,
-  DigiFormFilter,
   DigiIconChevronDown,
+  DigiDialog,
 } from "@digi/arbetsformedlingen-react";
-import { OccupationsList } from "./OccupationsList";
-import { ButtonSize, ButtonVariation } from "@digi/arbetsformedlingen";
+import { OccupationsList } from "./OccupationsList.tsx";
+import {
+  ButtonSize,
+  ButtonVariation,
+  DialogSize,
+} from "@digi/arbetsformedlingen";
 
 /*
 interface FilterBtnYrkeProps {
@@ -14,6 +16,8 @@ interface FilterBtnYrkeProps {
   setSelectedOccupations: (occupations: string[]) => void;
 }
 */
+
+const toggleOccupationsList = () => {};
 
 export const FilterBtnYrke = () => {
   return (
@@ -23,6 +27,9 @@ export const FilterBtnYrke = () => {
           afSize={ButtonSize.MEDIUM}
           afVariation={ButtonVariation.PRIMARY}
           afFullWidth={false}
+          onAfOnClick={() => {
+            toggleOccupationsList();
+          }}
         >
           Yrke <DigiIconChevronDown />
         </DigiButton>

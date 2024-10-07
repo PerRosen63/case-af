@@ -7,11 +7,24 @@
   display: none;
 }
 
+/************Taxonomy buttons***************/
+
+.button-row .sc-digi-icon-chevron-down {
+  margin-left: 1rem;
+  color: #ffffff;
+}
+
+.button-row .digi-button__text {
+  display: flex;
+  flex-direction: row;
+}
+
 /***************Occupations list****************/
 
 .occupation-group {
   padding: 0;
   margin-top: 0;
+  height: 95vh;
 }
 
 .occupation-group-item > div {
@@ -22,22 +35,14 @@
   border-color: #ffffff!important;
   border-bottom-color: var(--digi--button--color--border--secondary--default)!important;
   border-radius: 0!important;
+  padding-top: .3rem!important;
+  padding-bottom: .3rem!important;
 }
 
 .occupation-group-button-wrapper button span {
   display: flex;
     justify-content: space-between;
 }
-
-/* .button-icons {
-  display: flex;
-  width: 50px;
-  justify-content: space-between;
-}
-
-.button-icons .digi-icon-minus {
-  width: 15px!important;
-} */
 
 .occupation-narrower-wrapper {
   margin-top: 0.5rem;
