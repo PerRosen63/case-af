@@ -49,6 +49,7 @@
   background-color: #5a4b42;
   height: 25vh;
   padding-top: 30px;
+  padding-left: 20px;
 }
 
 .sc-digi-form-label {
@@ -71,3 +72,7 @@
   text-align: left;
 }
 
+.logo-dark {
+  width: 250px;
+  height: auto;
+}

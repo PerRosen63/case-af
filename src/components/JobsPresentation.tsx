@@ -1,5 +1,7 @@
 import { useContext, useEffect } from "react";
 import { JobContext } from "../contexts/JobContext";
+import { DigiList } from '@digi/arbetsformedlingen-react';
+import { ListType } from "@digi/arbetsformedlingen";
 
 export const JobsPresentation = () => {
   const { jobs } = useContext(JobContext);
@@ -13,7 +15,8 @@ export const JobsPresentation = () => {
 {jobs.length === 0 ? (
         <p>Inga jobb hittades.</p>
       ) : (
-      <ul>
+      <DigiList
+      afListType={ListType.BULLET}>
         {jobs.map((job) => (
           <li key={job.id}>
             <h3>{job.occupation.label}</h3>
@@ -25,7 +28,7 @@ export const JobsPresentation = () => {
             <p>Publicerad: {job.publication_date}</p>
           </li>
         ))}
-      </ul>
+      </DigiList>
         )}
     </>
   );
