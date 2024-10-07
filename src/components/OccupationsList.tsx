@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 import { IOccupation } from "../models/IOccupation";
 import { getOccupation } from "../service/taxonomyService";
-import { DigiButton, DigiFormCheckbox } from "@digi/arbetsformedlingen-react";
-import { ButtonSize, ButtonVariation } from "@digi/arbetsformedlingen";
+import {
+  DigiIconChevronRight,
+  DigiTypography,
+  DigiButton,
+  DigiFormCheckbox,
+} from "@digi/arbetsformedlingen-react";
+import {
+  ButtonSize,
+  ButtonVariation,
+  TypographyVariation,
+} from "@digi/arbetsformedlingen";
 
 export const OccupationsList = () => {
   const [occupationsGroup, setOccupationsGruop] = useState<IOccupation[]>([]);
@@ -97,57 +106,78 @@ export const OccupationsList = () => {
 
   return (
     <>
-      <h1>Occupations List</h1>
-      <div>
-        <ul className="occupation-group">
-          {occupationsGroup.map((occupationGroup) => (
-            <li className="occupation-group-item" key={occupationGroup.id}>
-              <DigiButton
-                afSize={ButtonSize.MEDIUM}
-                afVariation={ButtonVariation.SECONDARY}
-                afFullWidth={true}
-                onAfOnClick={() => {
-                  toggleDiv(occupationGroup.id);
-                }}
-              >
-                {occupationGroup.preferred_label}
-              </DigiButton>
-              {openDivId === occupationGroup.id && (
-                <div>
-                  <DigiFormCheckbox
-                    afLabel="Välj alla"
-                    afChecked={selectAllStatus[occupationGroup.id] || false}
-                    onAfOnChange={(e) => {
-                      console.log("e.target.checked:", occupationGroup.id);
-                      handleSelectAllChange(
-                        occupationGroup.id,
-                        e.target.checked
-                      );
+      <section>
+        <div className="occupations-list-wrapper">
+          <DigiTypography afVariation={TypographyVariation.SMALL}>
+            <div className="list-header">
+              <div className="list-header-left">
+                <p>Yrkesområden</p>
+              </div>
+              <div className="list-header-right">
+                <p>Yrken</p>
+              </div>
+            </div>
+          </DigiTypography>
+          <ul className="occupation-group">
+            {occupationsGroup.map((occupationGroup) => (
+              <li className="occupation-group-item" key={occupationGroup.id}>
+                {/*                 <DigiFormCheckbox afLabel="" />
+                 */}{" "}
+                <div className="occupation-group-button-wrapper">
+                  <DigiButton
+                    afSize={ButtonSize.MEDIUM}
+                    afVariation={ButtonVariation.SECONDARY}
+                    afFullWidth={true}
+                    onAfOnClick={() => {
+                      toggleDiv(occupationGroup.id);
                     }}
-                  ></DigiFormCheckbox>
-                  {occupationGroup.narrower.map((narrowerOccupation) => (
-                    <DigiFormCheckbox
-                      key={narrowerOccupation.id}
-                      afLabel={narrowerOccupation.preferred_label}
-                      afChecked={
-                        selectedNarrower[occupationGroup.id]?.includes(
-                          narrowerOccupation.id
-                        ) || false
-                      }
-                      onAfOnChange={(e) => {
-                        handleIndividualCheckboxChange(
-                          narrowerOccupation.id,
-                          e.target.checked
-                        );
-                      }}
-                    ></DigiFormCheckbox>
-                  ))}
+                  >
+                    {occupationGroup.preferred_label}
+                    <div className="button-icons">
+                      <DigiIconChevronRight />
+                    </div>
+                  </DigiButton>
                 </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+                <div className="occupation-narrower-outer-wrapper">
+                  {openDivId === occupationGroup.id && (
+                    <div className="occupation-narrower-wrapper">
+                      <DigiFormCheckbox
+                        className="select-all"
+                        afLabel="Välj alla"
+                        afChecked={selectAllStatus[occupationGroup.id] || false}
+                        onAfOnChange={(e) => {
+                          console.log("e.target.checked:", occupationGroup.id);
+                          handleSelectAllChange(
+                            occupationGroup.id,
+                            e.target.checked
+                          );
+                        }}
+                      ></DigiFormCheckbox>
+                      {occupationGroup.narrower.map((narrowerOccupation) => (
+                        <DigiFormCheckbox
+                          key={narrowerOccupation.id}
+                          afLabel={narrowerOccupation.preferred_label}
+                          afChecked={
+                            selectedNarrower[occupationGroup.id]?.includes(
+                              narrowerOccupation.id
+                            ) || false
+                          }
+                          onAfOnChange={(e) => {
+                            handleIndividualCheckboxChange(
+                              narrowerOccupation.id,
+                              e.target.checked
+                            );
+                          }}
+                        ></DigiFormCheckbox>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </>
   );
 };
