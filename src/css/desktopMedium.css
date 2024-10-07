@@ -1,7 +1,26 @@
 /* >768 */
 
+/*----------------header----------------*/
+
 .logo-light {
   width: 300px;
   height: auto;
   margin-bottom: 40px;
 }
+
+
+/*----------------main------------------*/
+
+.jobs-search-filter {
+  width: 50%;
+  padding: 20px;
+  margin: 50px;
+  box-sizing: border-box;
+}
+
+.digi-form-input-search {
+  width: 100%;
+}
+
+
+/*----------------footer----------------*/

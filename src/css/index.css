@@ -47,9 +47,10 @@
 
 .jobs-search-filter {
   background-color: #5a4b42;
-  height: 25vh;
+  height: auto;
   padding-top: 30px;
-  padding-left: 20px;
+  padding-bottom: 30px;
+  padding-left: 15px;
 }
 
 .sc-digi-form-label {

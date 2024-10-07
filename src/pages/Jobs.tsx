@@ -4,6 +4,8 @@ import { JobsPresentation } from "../components/JobsPresentation";
 import { JobContext } from "../contexts/JobContext";
 import { OccupationsList } from "../components/OccupationsList";
 import { SearchJob } from "../components/SearchJob";
+import { DigiTypography } from "@digi/arbetsformedlingen-react";
+import { TypographyVariation } from "@digi/arbetsformedlingen";
 
 export const Jobs = () => {
   const { jobs } = useContext(JobContext);
@@ -13,17 +15,22 @@ export const Jobs = () => {
   return (
     <div>
       <div>
-        <div className="jobs-search-filter">
-          <SearchJob />
-          <FilterBtnYrke
-            selectedOccupations={selectedOccupations}
-            setSelectedOccupations={setSelectedOccupations}
-          />
+        <div className="container-jobs-search-filter">
+          <div className="jobs-search-filter">
+            <SearchJob />
+            <FilterBtnYrke
+              selectedOccupations={selectedOccupations}
+              setSelectedOccupations={setSelectedOccupations}
+            />
+          </div>
         </div>
         {/*         <OccupationsList selectedOccupations={selectedOccupations} />
          */}{" "}
-        <h1>Jobs</h1>
-        <p>Antal jobb: {jobs.length}</p>
+        <DigiTypography
+          afVariation={TypographyVariation.SMALL}>
+          <h1>Jobs</h1>
+          <p>Antal jobb: {jobs.length}</p>
+        </DigiTypography>
         <JobsPresentation />
         <OccupationsList></OccupationsList>
       </div>
