@@ -20,10 +20,10 @@ export const Jobs = () => {
         />
         {/*         <OccupationsList selectedOccupations={selectedOccupations} />
          */}{" "}
-        <OccupationsList></OccupationsList>
         <h1>Jobs</h1>
         <p>Antal jobb: {jobs.length}</p>
         <JobsPresentation />
+        <OccupationsList></OccupationsList>
       </div>
     </div>
   );
