@@ -66,6 +66,11 @@
   --digi--color--text--inverted:#443131;
 }
 
+.digi-list__list {
+  list-style-type: none;
+}
+
+
 
 /*  -----------------footer-----------------------------  */
 
