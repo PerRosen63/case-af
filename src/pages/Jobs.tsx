@@ -22,7 +22,7 @@ export const Jobs = () => {
       <JobsPresentation currentPage={1} totalPages={10} onPageChange={function (newPage: number): void {
         throw new Error("Function not implemented.");
       } } />
-      
+
 
 
       {/* <OccupationsList selectedOccupations={selectedOccupations} />*/}

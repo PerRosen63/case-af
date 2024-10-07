@@ -6,7 +6,6 @@ interface PaginationProps {
   totalPages: number;
   onPageChange: (newPage: number) => void;
 }
-export const JOBS_PER_PAGE = 5;
 
 export const Pagination = ({
   currentPage,

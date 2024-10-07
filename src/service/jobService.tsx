@@ -1,4 +1,3 @@
-import { JOBS_PER_PAGE } from "../components/Pagination";
 import { IJob } from "../models/IJob";
 import { get } from "./jobBase";
 
@@ -12,8 +11,10 @@ export const getJobs = async (): Promise<IJob[]> => {
     return [];
   }
 };
+export const JOBS_PER_PAGE = 5;
 export const getJobsBySearch = async (searchTerm: string, page: number = 1): Promise<IJob[]> => {
   try {
+    
     const jobsPerPage = JOBS_PER_PAGE;
     const offset = (page - 1) * jobsPerPage;
     const endpoint = `?q=${encodeURIComponent(searchTerm)}&offset=${offset}&limit=${jobsPerPage}`;

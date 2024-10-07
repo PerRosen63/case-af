@@ -2,9 +2,9 @@ import { FormInputSearchVariation, FormInputType } from "@digi/arbetsformedlinge
 import { DigiFormInputSearch } from "@digi/arbetsformedlingen-react";
 import { useState, useContext } from "react";
 import { JobContext } from "../contexts/JobContext";
-import { getJobsBySearch } from "../service/jobService";
+import { getJobsBySearch, JOBS_PER_PAGE } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
-import { JOBS_PER_PAGE, Pagination } from "./Pagination";
+import { Pagination } from "./Pagination";
 
 export const SearchJob = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
