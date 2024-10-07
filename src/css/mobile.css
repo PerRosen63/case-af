@@ -9,6 +9,12 @@
 
 /************Taxonomy buttons***************/
 
+.button-row {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
 .button-row .sc-digi-icon-chevron-down {
   margin-left: 1rem;
   color: #ffffff;
@@ -19,7 +25,22 @@
   flex-direction: row;
 }
 
+.button-wrapper {
+  position: relative;
+}
+
+.occupations-list-popup {
+  position: absolute;
+  width: 710px;
+  
+}
+
 /***************Occupations list****************/
+
+.occupations-list-wrapper {
+  position: absolute;
+  background-color: #ffffff;
+}
 
 .occupation-group {
   padding: 0;

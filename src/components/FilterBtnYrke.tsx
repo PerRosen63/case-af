@@ -1,14 +1,10 @@
+import { useState } from "react";
+import { OccupationsList } from "./OccupationsList.tsx";
 import {
   DigiButton,
   DigiIconChevronDown,
-  DigiDialog,
 } from "@digi/arbetsformedlingen-react";
-import { OccupationsList } from "./OccupationsList.tsx";
-import {
-  ButtonSize,
-  ButtonVariation,
-  DialogSize,
-} from "@digi/arbetsformedlingen";
+import { ButtonSize, ButtonVariation } from "@digi/arbetsformedlingen";
 
 /*
 interface FilterBtnYrkeProps {
@@ -17,9 +13,9 @@ interface FilterBtnYrkeProps {
 }
 */
 
-const toggleOccupationsList = () => {};
-
 export const FilterBtnYrke = () => {
+  const [showOccupationsList, setShowOccupationsList] = useState(false);
+
   return (
     <>
       <div className="button-row">
@@ -27,14 +23,41 @@ export const FilterBtnYrke = () => {
           afSize={ButtonSize.MEDIUM}
           afVariation={ButtonVariation.PRIMARY}
           afFullWidth={false}
-          onAfOnClick={() => {
-            toggleOccupationsList();
-          }}
+          /* onAfOnClick={() => {
+            setShowOccupationsList(!showOccupationsList);
+          }} */
         >
-          Yrke <DigiIconChevronDown />
+          Ort <DigiIconChevronDown />
+        </DigiButton>
+        <div className="button-wrapper">
+          <DigiButton
+            afSize={ButtonSize.MEDIUM}
+            afVariation={ButtonVariation.PRIMARY}
+            afFullWidth={false}
+            onAfOnClick={() => {
+              setShowOccupationsList(!showOccupationsList);
+            }}
+          >
+            Yrke <DigiIconChevronDown />
+          </DigiButton>
+          {showOccupationsList && (
+            <div className="occupations-list-popup">
+              <OccupationsList></OccupationsList>
+            </div>
+          )}
+        </div>
+
+        <DigiButton
+          afSize={ButtonSize.MEDIUM}
+          afVariation={ButtonVariation.PRIMARY}
+          afFullWidth={false}
+          /* onAfOnClick={() => {
+            setShowOccupationsList(!showOccupationsList);
+          }} */
+        >
+          Filter <DigiIconChevronDown />
         </DigiButton>
       </div>
-      <OccupationsList></OccupationsList>
     </>
   );
 };
