@@ -60,6 +60,8 @@ export const Jobs = () => {
           onPageChange={handlePageChange}
         />
       )}
+
+        <OccupationsList></OccupationsList>
     </div>
   );
 };
