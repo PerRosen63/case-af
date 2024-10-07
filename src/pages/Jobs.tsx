@@ -13,11 +13,13 @@ export const Jobs = () => {
   return (
     <div>
       <div>
-        <SearchJob />
-        <FilterBtnYrke
-          selectedOccupations={selectedOccupations}
-          setSelectedOccupations={setSelectedOccupations}
-        />
+        <div className="jobs-search-filter">
+          <SearchJob />
+          <FilterBtnYrke
+            selectedOccupations={selectedOccupations}
+            setSelectedOccupations={setSelectedOccupations}
+          />
+        </div>
         {/*         <OccupationsList selectedOccupations={selectedOccupations} />
          */}{" "}
         <h1>Jobs</h1>

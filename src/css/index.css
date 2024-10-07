@@ -42,9 +42,26 @@
   display: none;
 }
 
-.logo-dark {
-  width: 250px;
-  height: auto;
+
+/*  -----------------main-------------------------------  */
+
+.jobs-search-filter {
+  background-color: #5a4b42;
+  height: 25vh;
+  padding-top: 30px;
+}
+
+.sc-digi-form-label {
+  color: #ffffff;
+}
+
+.digi-form-input-search__button {
+  --digi--color--background--inverted-1:#ffb875;
+  --digi--color--background--inverted-6: #ffd9b8;
+}
+
+.sc-digi-form-input-search {
+  --digi--color--text--inverted:#443131;
 }
 
 
