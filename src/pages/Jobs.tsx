@@ -6,6 +6,7 @@ import { SearchJob } from "../components/SearchJob";
 import { Pagination } from "../components/Pagination";
 import { getJobsBySearch, JOBS_PER_PAGE } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
+import { OccupationsList } from "../components/OccupationsList";
 
 export const Jobs = () => {
   const { jobs, dispatch } = useContext(JobContext);
