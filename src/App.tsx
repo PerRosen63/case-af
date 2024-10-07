@@ -1,5 +1,3 @@
-
-import "./App.css";
 import "./css/index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Router";
@@ -9,8 +7,7 @@ import { JobReducer, ActionType } from "./reducers/JobReducer";
 import { getJobs } from "./service/jobService";
 
 function App() {
-
- const [jobs, dispatch] = useReducer(JobReducer, []);
+  const [jobs, dispatch] = useReducer(JobReducer, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -22,12 +19,8 @@ function App() {
     };
     if (jobs.length > 0) return;
     getData();
-
   }, [jobs.length]);
-  
-  /* function myFunction(e: any) {
-    console.log(e);
-  } */
+
   return (
     <>
       <JobContext.Provider value={{ jobs, dispatch }}>
