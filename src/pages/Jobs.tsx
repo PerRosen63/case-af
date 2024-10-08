@@ -3,14 +3,9 @@ import { FilterBtnYrke } from "../components/FilterBtnYrke";
 import { JobsPresentation } from "../components/JobsPresentation";
 import { JobContext } from "../contexts/JobContext";
 import { SearchJob } from "../components/SearchJob";
-
-import { DigiTypography } from "@digi/arbetsformedlingen-react";
-import { TypographyVariation } from "@digi/arbetsformedlingen";
-
 import { Pagination } from "../components/Pagination";
 import { getJobsBySearch, JOBS_PER_PAGE } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
-
 
 export const Jobs = () => {
   const { jobs, dispatch } = useContext(JobContext);
@@ -40,28 +35,27 @@ export const Jobs = () => {
 
   return (
     <div>
-      <div>
-        <div className="container-jobs-search-filter">
-          <div className="jobs-search-filter">
-            <SearchJob />
-            <FilterBtnYrke
-              selectedOccupations={selectedOccupations}
-              setSelectedOccupations={setSelectedOccupations}
-            />
-          </div>
-        </div>
-        {/*         <OccupationsList selectedOccupations={selectedOccupations} />
-         */}{" "}
-        <DigiTypography
-          afVariation={TypographyVariation.SMALL}>
-          <div className="number-of-jobs">
-            <h1>Jobs</h1>
-            <p>Antal jobb: {jobs.length}</p>
-          </div>
-        </DigiTypography>
-        <JobsPresentation />
-        <OccupationsList></OccupationsList>
-      </div>
+      <SearchJob
+        onSearch={(term: string) => {
+          setActiveSearchTerm(term);
+          fetchJobs(term, 1);
+        }}
+      />
+      <FilterBtnYrke />
+
+      <JobsPresentation
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
+
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
