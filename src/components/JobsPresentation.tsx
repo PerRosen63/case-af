@@ -1,9 +1,15 @@
 import { useContext, useEffect } from "react";
 import { JobContext } from "../contexts/JobContext";
+import { OccupationContext } from "../contexts/OccupationContext";
 
 export const JobsPresentation = () => {
+  const { occupations } = useContext(OccupationContext);
 
   const { jobs } = useContext(JobContext);
+
+  useEffect(() => {
+    console.log("Filtered Occupations:", occupations);
+  }, [occupations]);
 
   useEffect(() => {
     console.log("Jobs array:", jobs);
@@ -11,7 +17,7 @@ export const JobsPresentation = () => {
 
   return (
     <>
-{jobs.length === 0 ? (
+      {jobs.length === 0 ? (
         <p>Inga jobb hittades.</p>
       ) : (
         <div>
@@ -20,16 +26,17 @@ export const JobsPresentation = () => {
               <li key={job.id}>
                 <h3>{job.occupation.label}</h3>
                 <h4 style={{ display: "inline" }}>
-                  {job.employer.name},  {job.workplace_address.city 
-                  ? job.workplace_address.city 
-                  : job.workplace_address.municipality}
+                  {job.employer.name},{" "}
+                  {job.workplace_address.city
+                    ? job.workplace_address.city
+                    : job.workplace_address.municipality}
                 </h4>
                 <p>Publicerad: {job.publication_date}</p>
               </li>
             ))}
           </ul>
-    </div>
-        )}
+        </div>
+      )}
     </>
   );
 };

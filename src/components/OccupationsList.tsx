@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IOccupation } from "../models/IOccupation";
 import { getOccupation } from "../service/taxonomyService";
 import {
@@ -12,6 +12,8 @@ import {
   ButtonVariation,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
+import { ActionType } from "../reducers/JobReducer";
+import { OccupationContext } from "../contexts/OccupationContext";
 
 export const OccupationsList = () => {
   const [occupationsGroup, setOccupationsGruop] = useState<IOccupation[]>([]);
@@ -25,6 +27,8 @@ export const OccupationsList = () => {
   const [selectAllStatus, setSelectAllStatus] = useState<{
     [groupId: string]: boolean;
   }>({});
+
+  const { dispatch } = useContext(OccupationContext); // Access dispatch here
 
   useEffect(() => {
     const fetchData = async () => {
@@ -112,6 +116,10 @@ export const OccupationsList = () => {
     console.log("Selected Occupations:", selectedOccupations);
     // Here you can send the selectedOccupations to your other component
     // For example, using a context or by lifting the state up
+    dispatch({
+      type: ActionType.FILTER_OCCUPATIONS,
+      payload: selectedOccupations,
+    });
   };
 
   return (

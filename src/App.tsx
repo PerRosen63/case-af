@@ -5,6 +5,8 @@ import { JobContext } from "./contexts/JobContext";
 import { useReducer, useEffect } from "react";
 import { JobReducer, ActionType } from "./reducers/JobReducer";
 import { getJobs } from "./service/jobService";
+import { OccupationProvider } from "./contexts/OccupationContext";
+import OccupationsFetcher from "./components/OccupationsFetcher";
 
 function App() {
   const [jobs, dispatch] = useReducer(JobReducer, []);
@@ -23,9 +25,12 @@ function App() {
 
   return (
     <>
-      <JobContext.Provider value={{ jobs, dispatch }}>
-        <RouterProvider router={router}></RouterProvider>
-      </JobContext.Provider>
+      <OccupationProvider>
+        <OccupationsFetcher />
+        <JobContext.Provider value={{ jobs, dispatch }}>
+          <RouterProvider router={router}></RouterProvider>
+        </JobContext.Provider>
+      </OccupationProvider>
     </>
   );
 }
