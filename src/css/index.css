@@ -78,7 +78,7 @@ main {
   list-style-type: none;
 }
 
-.digi-list__item {
+.digi-list__item {        /* unable to manipulate left margin */
   background: #ffffff;
   width: 100vw;
   margin-top: 8px;

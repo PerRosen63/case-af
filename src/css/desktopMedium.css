@@ -11,7 +11,7 @@
 
 /*----------------main------------------*/
 
-.digi-list__item {
+.digi-list__item {        /* unable to manipulate right margin */
   background: #ffffff;
   width: 100vw;
   margin-top: 8px;
