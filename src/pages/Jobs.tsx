@@ -9,7 +9,7 @@ import { ActionType } from "../reducers/JobReducer";
 import { OccupationsList } from "../components/OccupationsList";
 
 export const Jobs = () => {
-  const { jobs, dispatch } = useContext(JobContext);
+  const { dispatch } = useContext(JobContext);
 
   const [selectedOccupations, setSelectedOccupations] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -29,7 +29,6 @@ export const Jobs = () => {
       console.error("Error fetching jobs:", error);
     }
   };
-
  
   const handlePageChange = (newPage: number) => {
     fetchJobs(activeSearchTerm, newPage);
@@ -56,6 +55,7 @@ export const Jobs = () => {
 
       {totalPages > 1 && (
         <Pagination
+          key={`pagination-${currentPage}-${totalPages}`}
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
