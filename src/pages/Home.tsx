@@ -1,7 +1,3 @@
-
-import { TypographyVariation } from "@digi/arbetsformedlingen"
-import { DigiTypography } from "@digi/arbetsformedlingen-react"
-
 import { ButtonVariation, TypographyVariation } from "@digi/arbetsformedlingen";
 import { DigiButton, DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
 import { Link } from "react-router-dom";
@@ -45,14 +41,7 @@ export const Home = () => {
       </DigiLayoutContainer>
 
 
-  return (<>
-  <DigiTypography
-    afVariation={TypographyVariation.SMALL}>
-      <h1>Home</h1>
-    </DigiTypography>
-  </>)
   
-  }
 
       <DigiLayoutContainer afVerticalPadding>
         <h3>Arbetslös, vad händer nu?</h3>
