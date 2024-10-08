@@ -1,3 +1,5 @@
+/*------------------header---------------*/
+
 .logo-light-no-text {
   width: 40px;
   height: 40px;
@@ -6,6 +8,19 @@
 .logo-light {
   display: none;
 }
+
+
+
+/*------------------main-----------------*/
+
+.digi-form-input-search {
+  box-sizing: border-box;
+  padding-right: 20px;
+  width: 95vw;
+}
+  
+
+/*------------------footer---------------*/
 
 /************Taxonomy buttons***************/
 

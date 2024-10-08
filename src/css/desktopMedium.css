@@ -1,10 +1,26 @@
 /* >768 */
 
+/*----------------header----------------*/
+
 .logo-light {
   width: 300px;
   height: auto;
   margin-bottom: 40px;
 }
+
+
+
+/*----------------main------------------*/
+
+.digi-list__item {        /* unable to manipulate right margin */
+  background: #ffffff;
+  width: 100vw;
+  margin-top: 8px;
+  margin-right: 16px;
+}
+
+
+/*----------------footer----------------*/
 
 /***************Occupations list****************/
 

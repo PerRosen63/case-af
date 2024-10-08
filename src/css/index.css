@@ -46,15 +46,52 @@
   display: none;
 }
 
-.logo-dark {
-  width: 250px;
+
+/*  -----------------main-------------------------------  */
+
+main {
+  background-color:#ededed;
+}
+
+.jobs-search-filter {
+  background-color: #5a4b42;
   height: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+}
+
+.sc-digi-form-label {
+  color: #ffffff;
+}
+
+.digi-form-input-search__button {
+  --digi--color--background--inverted-1:#ffb875;
+  --digi--color--background--inverted-6: #ffd9b8;
+}
+
+.sc-digi-form-input-search {
+  --digi--color--text--inverted:#443131;
+}
+
+.number-of-jobs {
+  background-color: #ffffff;
+}
+
+.digi-list__list {
+  list-style-type: none;
+}
+
+.digi-list__item {        /* unable to manipulate left margin */
+  background: #ffffff;
+  width: 100vw;
+  margin-top: 8px;
 }
 
 
 /*  -----------------footer-----------------------------  */
 
-.footer-card {
-  text-align: left;
+.logo-dark {
+  width: 250px;
+  height: auto;
 }
-
