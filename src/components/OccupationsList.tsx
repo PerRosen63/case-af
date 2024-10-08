@@ -104,6 +104,16 @@ export const OccupationsList = () => {
     setOpenDivId((prevId) => (prevId === groupId ? null : groupId));
   };
 
+  const handleSubmit = () => {
+    const selectedOccupations = Object.entries(selectedNarrower)
+      .filter(([, narrowerIds]) => narrowerIds.length > 0)
+      .map(([groupId, narrowerIds]) => ({ groupId, narrowerIds }));
+
+    console.log("Selected Occupations:", selectedOccupations);
+    // Here you can send the selectedOccupations to your other component
+    // For example, using a context or by lifting the state up
+  };
+
   return (
     <>
       {/* <section> */}
@@ -146,7 +156,10 @@ export const OccupationsList = () => {
                       afLabel="Välj alla"
                       afChecked={selectAllStatus[occupationGroup.id] || false}
                       onAfOnChange={(e) => {
-                        console.log("e.target.checked:", occupationGroup.id);
+                        console.log(
+                          "Yrkesområden e.target.checked:",
+                          occupationGroup.id
+                        );
                         handleSelectAllChange(
                           occupationGroup.id,
                           e.target.checked
@@ -163,6 +176,10 @@ export const OccupationsList = () => {
                           ) || false
                         }
                         onAfOnChange={(e) => {
+                          console.log(
+                            "Yrken e.target.checked:",
+                            narrowerOccupation.id
+                          );
                           handleIndividualCheckboxChange(
                             narrowerOccupation.id,
                             e.target.checked
@@ -177,7 +194,9 @@ export const OccupationsList = () => {
           ))}
         </ul>
         <div className="popup-footer">
-          <DigiButton afSize={ButtonSize.MEDIUM}>Visa ...</DigiButton>
+          <DigiButton afSize={ButtonSize.MEDIUM} onAfOnClick={handleSubmit}>
+            Visa ...
+          </DigiButton>
         </div>
       </div>
       {/* </section> */}
