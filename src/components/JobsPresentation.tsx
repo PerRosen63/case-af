@@ -6,7 +6,7 @@ interface IJobsPresentationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
-  jobs: IJob[]; // Pass the jobs as props
+  jobs: IJob[];
 }
 
 export const JobsPresentation = ({ currentPage, totalPages, onPageChange, jobs }: IJobsPresentationProps) => {

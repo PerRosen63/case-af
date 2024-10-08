@@ -1,28 +1,22 @@
-import { useContext } from "react";
 import { IJob } from "../models/IJob";
-import { JobContext } from "../contexts/JobContext";
 
-interface IJobPresentation {
-  job: IJob;
-  
+interface IJobPresentationProps {
+  job: IJob | null;
 }
 
-export const JobPresentation = ({
-  
-  job
-}: IJobPresentation) => {
-  /*const { dispatch } = */
-  useContext(JobContext)
+export const JobPresentation = ({ job }: IJobPresentationProps) => {
 
-  
-  return (<>
-    <div >
-      <h2>{job.id}</h2>
-  
-      
+  if (!job) {
+    return <div>No job data available</div>;
+  }
+  return (
+    <div>
+      <ul>
+        <li key={job.id}>
+          <h2>{job.id}</h2>
+          <h2>{job.occupation.label}</h2>
+        </li>
+      </ul>
     </div>
-
-
-  </>)
-}
-
+  );
+};
