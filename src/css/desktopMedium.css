@@ -11,18 +11,11 @@
 
 /*----------------main------------------*/
 
-.jobs-search-filter {
-  width: 400px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin-left: 30px;
-  box-sizing: border-box;
-}
-
-.digi-form-input-search {
-  width: 100%;
+.digi-list__item {
+  background: #ffffff;
+  width: 100vw;
+  margin-top: 8px;
+  margin-right: 16px;
 }
 
 

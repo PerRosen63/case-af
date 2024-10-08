@@ -28,8 +28,10 @@ export const Jobs = () => {
          */}{" "}
         <DigiTypography
           afVariation={TypographyVariation.SMALL}>
-          <h1>Jobs</h1>
-          <p>Antal jobb: {jobs.length}</p>
+          <div className="number-of-jobs">
+            <h1>Jobs</h1>
+            <p>Antal jobb: {jobs.length}</p>
+          </div>
         </DigiTypography>
         <JobsPresentation />
         <OccupationsList></OccupationsList>
