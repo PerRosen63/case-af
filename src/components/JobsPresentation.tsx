@@ -4,6 +4,7 @@ import { DigiList } from '@digi/arbetsformedlingen-react';
 import { ListType } from "@digi/arbetsformedlingen";
 
 export const JobsPresentation = () => {
+
   const { jobs } = useContext(JobContext);
 
   useEffect(() => {
@@ -15,6 +16,7 @@ export const JobsPresentation = () => {
 {jobs.length === 0 ? (
         <p>Inga jobb hittades.</p>
       ) : (
+
       <DigiList
       afListType={ListType.BULLET}>
         {jobs.map((job) => (
@@ -29,6 +31,7 @@ export const JobsPresentation = () => {
           </li>
         ))}
       </DigiList>
+
         )}
     </>
   );
