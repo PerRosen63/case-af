@@ -5,3 +5,66 @@
   height: auto;
   margin-bottom: 40px;
 }
+
+/***************Occupations list****************/
+
+.occupations-list-wrapper {
+  max-width: 710px;
+  width: 100%;
+  height: 100vh;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  box-shadow: 1px 1px 1px;
+}
+
+.list-header {
+  display: flex;
+  flex-direction: row;  
+}
+
+.list-header > div {
+  width: 50%;  
+}
+
+.list-header > .list-header-left { 
+  border-right: 1px solid;
+  border-right-color: var(--digi--button--color--border--secondary--default)!important;
+}
+
+.list-header > div > p { 
+  border-bottom: 1px solid;
+  border-bottom-color: var(--digi--button--color--border--secondary--default)!important;
+  margin: .5rem 1rem;
+}
+
+
+.occupation-group {
+  position: relative;
+  height: 85vh;
+}
+
+.occupation-group-item {
+  display: flex;
+  width: 100%;
+}
+
+.occupation-group-item .occupation-group-button-wrapper {
+  border-right: 1px solid;
+  border-right-color: var(--digi--button--color--border--secondary--default)!important;
+}
+
+.occupation-group-item > div {
+  width: 50%;
+}
+
+.occupation-group-button-wrapper button {
+  border-color: #ffffff!important;
+}
+
+.occupation-narrower-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 85vh;
+  overflow-y: scroll;
+}
