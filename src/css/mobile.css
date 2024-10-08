@@ -75,5 +75,13 @@
   margin-bottom: 3px;
 }
 
+.popup-footer {
+  background-color: var(--digi--global--color--neutral--grayscale--base);
+  height: 8.6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
