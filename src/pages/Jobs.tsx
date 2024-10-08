@@ -52,6 +52,7 @@ export const Jobs = () => {
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
+        jobs={jobs} 
       />
 
       {totalPages > 1 && (

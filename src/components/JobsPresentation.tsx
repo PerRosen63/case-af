@@ -1,9 +1,17 @@
-import { useContext, useEffect } from "react";
-import { JobContext } from "../contexts/JobContext";
+import { useEffect } from "react";
+import { IJob } from "../models/IJob";
+import { Link } from "react-router-dom";
 
-export const JobsPresentation = () => {
+interface IJobsPresentationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  jobs: IJob[]; // Pass the jobs as props
+}
 
-  const { jobs } = useContext(JobContext);
+export const JobsPresentation = ({ currentPage, totalPages, onPageChange, jobs }: IJobsPresentationProps) => {
+
+  //const { jobs } = useContext(JobContext);
 
   useEffect(() => {
     console.log("Jobs array:", jobs);
@@ -18,7 +26,7 @@ export const JobsPresentation = () => {
           <ul>
             {jobs.map((job) => (
               <li key={job.id}>
-                <h3>{job.occupation.label}</h3>
+                <h3><Link to={`/job/${job.id}`}>{job.occupation.label}</Link></h3>
                 <h4 style={{ display: "inline" }}>
                   {job.employer.name},  {job.workplace_address.city 
                   ? job.workplace_address.city 
