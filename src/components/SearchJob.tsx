@@ -17,20 +17,17 @@ export const SearchJob = ({ onSearch }: ISearchJobProps) => {
   };
 
   return (
-
-    <>
-      <form onSubmit={handleSearch}>
-        <div className="search-input">
-          <DigiFormInputSearch
-            afLabel="Sök på ett eller flera ord. T.ex. lärare Örebro."
-            afVariation={FormInputSearchVariation.MEDIUM}
-            afType={FormInputType.SEARCH}	
-            afButtonText="Sök"
-            onAfOnChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-      </form>
-    </>
-
+    <form onSubmit={handleSearch}>
+      <div className="search-input">
+        <DigiFormInputSearch
+          afLabel="Sök jobb"
+          afVariation={FormInputSearchVariation.MEDIUM}
+          afType={FormInputType.SEARCH}
+          afButtonText="Sök"
+          onAfOnChange={(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
+        />
+      </div>
+    </form>
   );
 };
