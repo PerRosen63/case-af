@@ -26,7 +26,7 @@ export const SearchJob = () => {
       <form onSubmit={handleSearch}>
         <div className="search-input">
           <DigiFormInputSearch
-            afLabel="Sök jobb"
+            afLabel="Sök på ett eller flera ord. T.ex. lärare Örebro."
             afVariation={FormInputSearchVariation.MEDIUM}
             afType={FormInputType.SEARCH}	
             afButtonText="Sök"
