@@ -6,16 +6,18 @@ import { JobPresentation } from "../components/JobPresentation.tsx";
 export const Job = () => {
   const { id } = useParams();
   const { jobs } = useContext(JobContext);
-  
-  const selectedJob = jobs.find((job) => job.id === id);
 
-  if (!selectedJob) {
-    return <p>Här hittar du inget jobb.</p>;
+  if (id) {
+    const job = jobs.find((p) => p.id === id);
+    
+    if (job) {
+      return (
+        <>
+          <JobPresentation job={job} detailMode={true} />
+        </>
+      );
+    }
   }
 
-  return (
-    <>
-      <JobPresentation job={selectedJob} />
-    </>
-  );
+  return <div>No job found</div>;
 };

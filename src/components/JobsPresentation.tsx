@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { JobPresentation } from "./JobPresentation";
 import { JobContext } from "../contexts/JobContext";
 import { OccupationContext } from "../contexts/OccupationContext";
 import { IJob } from "../models/IJob";
@@ -32,16 +33,7 @@ export const JobsPresentation = () => {
         <div>
           <ul>
             {filteredJobs.map((job) => (
-              <li key={job.id}>
-                <h3>{job.occupation.label}</h3>
-                <h4 style={{ display: "inline" }}>
-                  {job.employer.name},{" "}
-                  {job.workplace_address.city
-                    ? job.workplace_address.city
-                    : job.workplace_address.municipality}
-                </h4>
-                <p>Publicerad: {job.publication_date}</p>
-              </li>
+              <JobPresentation job={job} key={job.id}></JobPresentation>
             ))}
           </ul>
         </div>

@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { FilterBtnYrke } from "../components/FilterBtnYrke";
 import { JobsPresentation } from "../components/JobsPresentation";
 import { JobContext } from "../contexts/JobContext";
@@ -9,17 +10,23 @@ import { ActionType } from "../reducers/JobReducer";
 
 export const Jobs = () => {
   const { jobs, dispatch } = useContext(JobContext);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = searchParams.get('page');
+  const searchTermParam = searchParams.get('searchTerm');
 
-  // const [selectedOccupations, setSelectedOccupations] = useState<string[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(pageParam ? parseInt(pageParam) : 1);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [activeSearchTerm, setActiveSearchTerm] = useState<string>("");
+  const [activeSearchTerm, setActiveSearchTerm] = useState<string>(searchTermParam || "");
+
+
+  useEffect(() => {
+    fetchJobs(activeSearchTerm, currentPage);
+  }, [currentPage, activeSearchTerm]);
 
   const fetchJobs = async (term: string, page: number) => {
     try {
       const jobs = await getJobsBySearch(term, page);
       dispatch({ type: ActionType.SEARCHED, payload: jobs });
-      setCurrentPage(page);
 
       const totalHits = 100;
       const jobsPerPage = JOBS_PER_PAGE;
@@ -30,27 +37,37 @@ export const Jobs = () => {
   };
 
   const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    setSearchParams({ page: String(newPage), searchTerm: activeSearchTerm });
     fetchJobs(activeSearchTerm, newPage);
+  };
+
+  const handleSearch = (term: string) => {
+    setActiveSearchTerm(term);
+    setCurrentPage(1);
+    setSearchParams({ page: '1', searchTerm: term });
+    fetchJobs(term, 1);
   };
 
   return (
     <div>
-      <SearchJob
-        onSearch={(term: string) => {
-          setActiveSearchTerm(term);
-          fetchJobs(term, 1);
-        }}
-      />
-      <FilterBtnYrke />
-
+      <div className="jobs-search-filter">
+        <SearchJob
+          onSearch={handleSearch}
+        />
+        <FilterBtnYrke />
+      </div>
+      
       <JobsPresentation
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
+        jobs={jobs}
       />
 
       {totalPages > 1 && (
         <Pagination
+          key={`pagination-${currentPage}-${totalPages}`}
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}

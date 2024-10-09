@@ -25,7 +25,7 @@ export interface IJob {
   };
   salary_type: {
     concept_id: "string";
-    abel: "string";
+    label: "string";
     legacy_ams_taxonomy_id: "string";
   };
 
