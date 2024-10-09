@@ -78,12 +78,12 @@ export interface IJob {
   };
 
   occupation_group: {
-    concept_id: "string"; // Yrken!!!
+    concept_id: "string"; // narrowerId
     label: "string";
     legacy_ams_taxonomy_id: "string";
   };
   occupation_field: {
-    concept_id: "string"; // Yrkesområden!!!
+    concept_id: "string"; // groupId
     label: "string";
     legacy_ams_taxonomy_id: "string";
   };

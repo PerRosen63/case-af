@@ -1,16 +1,24 @@
 import { useContext, useEffect } from "react";
 import { JobContext } from "../contexts/JobContext";
 import { OccupationContext } from "../contexts/OccupationContext";
+import { IJob } from "../models/IJob";
 
 export const JobsPresentation = () => {
   const { occupations } = useContext(OccupationContext);
-
+  const { filteredOccupations } = occupations;
   const { jobs } = useContext(JobContext);
+
+  const filteredJobs = jobs.filter((job: IJob) => {
+    return filteredOccupations.some(
+      (occupation) => occupation.id === job.occupation_field.concept_id
+    );
+  });
 
   useEffect(() => {
     console.log("All Occupations:", occupations.allOccupations);
     console.log("Filtered Occupations:", occupations.filteredOccupations);
-  }, [occupations]);
+    console.log("filtered jobs", filteredJobs);
+  }, [filteredJobs, occupations]);
 
   useEffect(() => {
     console.log("Jobs array:", jobs);
@@ -18,12 +26,12 @@ export const JobsPresentation = () => {
 
   return (
     <>
-      {jobs.length === 0 ? (
+      {filteredJobs.length === 0 ? (
         <p>Inga jobb hittades.</p>
       ) : (
         <div>
           <ul>
-            {jobs.map((job) => (
+            {filteredJobs.map((job) => (
               <li key={job.id}>
                 <h3>{job.occupation.label}</h3>
                 <h4 style={{ display: "inline" }}>

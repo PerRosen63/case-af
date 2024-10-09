@@ -16,7 +16,7 @@ interface FilterOccupationsAction {
   type: ActionType.FILTER_OCCUPATIONS;
   payload: {
     groupId: string;
-    narrowerIds: string[];
+    narrowerIds?: string[];
   }[];
 }
 
@@ -36,6 +36,7 @@ export const occupationReducer = (
   state: OccupationState = initialState,
   action: OccupationAction
 ): OccupationState => {
+  console.log(action.payload);
   switch (action.type) {
     case ActionType.SET_OCCUPATIONS:
       return {
@@ -46,18 +47,23 @@ export const occupationReducer = (
     case ActionType.FILTER_OCCUPATIONS:
       return {
         ...state,
-        filteredOccupations: state.allOccupations.filter((occupation) => {
-          // Filter from allOccupations
-          // Find a matching selection from the payload
-          const matchingSelection = action.payload.find(
-            (selected) =>
-              selected.groupId === occupation.id ||
-              (selected.narrowerIds &&
-                selected.narrowerIds.includes(occupation.id))
-          );
-
-          return !!matchingSelection;
-        }),
+        filteredOccupations: action.payload
+          .map((selected) => {
+            // Select All case: Find the occupation group by groupId
+            if (!selected.narrowerIds) {
+              const group = state.allOccupations.find(
+                (occupation) => occupation.id === selected.groupId
+              );
+              return group || []; // Return the group object, not the entire occupation
+            }
+            // Individual selection case: Filter by narrowerIds
+            else {
+              return state.allOccupations.filter((occupation) =>
+                selected.narrowerIds?.includes(occupation.id)
+              );
+            }
+          })
+          .flat(), // Flatten the array after mapping
       };
     default:
       return state;

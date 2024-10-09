@@ -117,9 +117,9 @@ export const OccupationsList = () => {
       const isAllNarrowerSelected =
         narrowerIds.length === group.narrower.length;
 
-      // If all narrower are selected, return only the groupId with an EMPTY narrowerIds array
+      // If all narrower are selected, return only the groupId
       if (isAllNarrowerSelected) {
-        return [{ groupId: group.id, narrowerIds: [] }];
+        return [{ groupId: group.id }];
       }
 
       // Otherwise, return an object with groupId and the selected narrowerIds
