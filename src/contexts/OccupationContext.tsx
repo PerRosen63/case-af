@@ -17,12 +17,15 @@ type OccupationContextType = {
   dispatch: Dispatch<OccupationAction>;
 };
 
+// Initial state for the reducer
+const initialState: OccupationState = {
+  allOccupations: [],
+  filteredOccupations: [],
+};
+
 // Update the initial context value
 export const OccupationContext = createContext<OccupationContextType>({
-  occupations: {
-    allOccupations: [],
-    filteredOccupations: [],
-  },
+  occupations: initialState,
   dispatch: () => {
     return;
   },
@@ -33,7 +36,7 @@ export const OccupationProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [occupations, dispatch] = useReducer(occupationReducer, []);
+  const [occupations, dispatch] = useReducer(occupationReducer, initialState);
 
   return (
     <OccupationContext.Provider value={{ occupations, dispatch }}>
