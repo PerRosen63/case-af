@@ -35,13 +35,27 @@ export const JobPresentation = ({ job, detailMode = false }: IJobPresentation) =
           {detailMode && (
             <>
               <img src={job.logo_url} />
+
               <h2>{job.occupation.label}</h2>
-              <h4 style={{ display: "inline" }}>
+
+              <h3 style={{ display: "inline" }}>
                 {job.employer.name},  {job.workplace_address.city 
                 ? job.workplace_address.city 
                 : job.workplace_address.municipality}
-              </h4>
-              <p>{job.description.text}</p>
+              </h3>
+
+              <div><h4>Om jobbet</h4>
+                <p>{job.description.text}</p>
+              </div>
+
+              <div><h4>Om anställningen</h4>
+                <p>Typ av anställning: {job.employment_type.label}</p>
+                <p>Lön: {job.salary_type.label}</p>
+                <p>Var ligger arbetsplatsen: {job.workplace_address.city 
+                ? job.workplace_address.city 
+                : job.workplace_address.municipality}</p>
+              </div>
+
               <p>Publicerad: {job.publication_date}</p>
             </>
           )}
