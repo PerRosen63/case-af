@@ -21,9 +21,9 @@ export const JobPresentation = ({ job, detailMode = false }: IJobPresentation) =
         <li key={job.id}>
           {!detailMode && (
             <>
-              <h2>
+              <h3>
                 <Link to={`/job/${job.id}`}>{job.occupation.label}</Link>
-              </h2>
+              </h3>
               <h4 style={{ display: "inline" }}>
                 {job.employer.name},  {job.workplace_address.city 
                 ? job.workplace_address.city 
