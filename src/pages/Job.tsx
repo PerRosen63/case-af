@@ -8,7 +8,7 @@ export const Job = () => {
   const { jobs } = useContext(JobContext);
 
   if (id) {
-    const job = jobs.find((p) => p.id === +id);
+    const job = jobs.find((p) => p.id === id);
     
     if (job) {
       return (
