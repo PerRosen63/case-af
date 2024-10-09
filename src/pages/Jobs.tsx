@@ -28,7 +28,6 @@ export const Jobs = () => {
       console.error("Error fetching jobs:", error);
     }
   };
-
  
   const handlePageChange = (newPage: number) => {
     fetchJobs(activeSearchTerm, newPage);
