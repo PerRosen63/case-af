@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getOccupation } from "../service/taxonomyService";
 import { OccupationContext } from "../contexts/OccupationContext";
 import { useContext } from "react";
-import { ActionType } from "../reducers/JobReducer";
+import { ActionType } from "../reducers/OccupationReducer";
 
 export const OccupationsFetcher = () => {
   const { dispatch } = useContext(OccupationContext);

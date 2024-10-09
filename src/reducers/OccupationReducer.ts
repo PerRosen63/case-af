@@ -20,30 +20,45 @@ interface FilterOccupationsAction {
   }[];
 }
 
-type OccupationAction = SetOccupationsAction | FilterOccupationsAction;
+export type OccupationAction = SetOccupationsAction | FilterOccupationsAction;
 
-// Define the initial state
-const initialState: IOccupation[] = [];
+interface OccupationState {
+  allOccupations: IOccupation[]; // Store all fetched occupations
+  filteredOccupations: IOccupation[];
+}
 
-// The reducer function
+const initialState: OccupationState = {
+  allOccupations: [],
+  filteredOccupations: [],
+};
+
 export const occupationReducer = (
-  state: IOccupation[] = initialState,
+  state: OccupationState = initialState,
   action: OccupationAction
-): IOccupation[] => {
+): OccupationState => {
   switch (action.type) {
     case ActionType.SET_OCCUPATIONS:
-      return action.payload;
+      return {
+        ...state,
+        allOccupations: action.payload,
+        filteredOccupations: action.payload, // Initially, filtered is the same as all
+      };
     case ActionType.FILTER_OCCUPATIONS:
-      // Implement your filtering logic here
-      // Example:
-      return state.filter((occupation) => {
-        // Check if the occupation's ID is in the selected narrowerIds
-        return action.payload.some(
-          (selected) =>
-            selected.narrowerIds.includes(occupation.id) ||
-            selected.groupId === occupation.id
-        );
-      });
+      return {
+        ...state,
+        filteredOccupations: state.allOccupations.filter((occupation) => {
+          // Filter from allOccupations
+          // Find a matching selection from the payload
+          const matchingSelection = action.payload.find(
+            (selected) =>
+              selected.groupId === occupation.id ||
+              (selected.narrowerIds &&
+                selected.narrowerIds.includes(occupation.id))
+          );
+
+          return !!matchingSelection;
+        }),
+      };
     default:
       return state;
   }

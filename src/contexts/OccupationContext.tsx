@@ -1,14 +1,28 @@
 import { createContext, Dispatch, useReducer } from "react";
 import { IOccupation } from "../models/IOccupation";
-import { occupationReducer } from "../reducers/OccupationReducer";
+import {
+  occupationReducer,
+  OccupationAction,
+} from "../reducers/OccupationReducer";
 
+// Define the new structure for OccupationState
+interface OccupationState {
+  allOccupations: IOccupation[];
+  filteredOccupations: IOccupation[];
+}
+
+// Update the context type
 type OccupationContextType = {
-  occupations: IOccupation[];
+  occupations: OccupationState;
   dispatch: Dispatch<OccupationAction>;
 };
 
+// Update the initial context value
 export const OccupationContext = createContext<OccupationContextType>({
-  occupations: [],
+  occupations: {
+    allOccupations: [],
+    filteredOccupations: [],
+  },
   dispatch: () => {
     return;
   },

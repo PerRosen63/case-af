@@ -8,7 +8,6 @@ export interface IAction {
 export enum ActionType {
   LOADED,
   SEARCHED,
-  SET_OCCUPATIONS,
 }
 
 export const JobReducer = (jobs: IJob[], action: IAction): IJob[] => {

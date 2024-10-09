@@ -8,7 +8,8 @@ export const JobsPresentation = () => {
   const { jobs } = useContext(JobContext);
 
   useEffect(() => {
-    console.log("Filtered Occupations:", occupations);
+    console.log("All Occupations:", occupations.allOccupations);
+    console.log("Filtered Occupations:", occupations.filteredOccupations);
   }, [occupations]);
 
   useEffect(() => {

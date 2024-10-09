@@ -12,8 +12,9 @@ import {
   ButtonVariation,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
-import { ActionType } from "../reducers/JobReducer";
+
 import { OccupationContext } from "../contexts/OccupationContext";
+import { ActionType } from "../reducers/OccupationReducer";
 
 export const OccupationsList = () => {
   const [occupationsGroup, setOccupationsGruop] = useState<IOccupation[]>([]);
@@ -109,13 +110,31 @@ export const OccupationsList = () => {
   };
 
   const handleSubmit = () => {
-    const selectedOccupations = Object.entries(selectedNarrower)
-      .filter(([, narrowerIds]) => narrowerIds.length > 0)
-      .map(([groupId, narrowerIds]) => ({ groupId, narrowerIds }));
+    const selectedOccupations = occupationsGroup.flatMap((group) => {
+      const narrowerIds = selectedNarrower[group.id] || [];
+
+      // Check if all narrower occupations within a group are selected
+      const isAllNarrowerSelected =
+        narrowerIds.length === group.narrower.length;
+
+      // If all narrower are selected, return only the groupId with an EMPTY narrowerIds array
+      if (isAllNarrowerSelected) {
+        return [{ groupId: group.id, narrowerIds: [] }];
+      }
+
+      // Otherwise, return an object with groupId and the selected narrowerIds
+      else if (narrowerIds.length > 0) {
+        return [{ groupId: group.id, narrowerIds: narrowerIds }];
+      }
+
+      // If none are selected, return an empty array so this group is skipped
+      else {
+        return [];
+      }
+    });
 
     console.log("Selected Occupations:", selectedOccupations);
-    // Here you can send the selectedOccupations to your other component
-    // For example, using a context or by lifting the state up
+
     dispatch({
       type: ActionType.FILTER_OCCUPATIONS,
       payload: selectedOccupations,
