@@ -65,6 +65,7 @@ export const Jobs = () => {
 
       {totalPages > 1 && (
         <Pagination
+          key={`pagination-${currentPage}-${totalPages}`}
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
