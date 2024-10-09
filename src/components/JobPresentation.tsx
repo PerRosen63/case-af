@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { IJob } from "../models/IJob";
 import { JobContext } from "../contexts/JobContext";
 import { useContext } from "react";
+import { DigiList } from "@digi/arbetsformedlingen-react";
+import { ListType } from "@digi/arbetsformedlingen";
 
 interface IJobPresentation {
   job: IJob | null;
@@ -17,7 +19,8 @@ export const JobPresentation = ({ job, detailMode = false }: IJobPresentation) =
 
   return (
     <div>
-      <ul>
+      <DigiList
+        afListType={ListType.BULLET}>
         <li key={job.id}>
           {!detailMode && (
             <>
@@ -44,7 +47,7 @@ export const JobPresentation = ({ job, detailMode = false }: IJobPresentation) =
             </>
           )}
         </li>
-      </ul>
+      </DigiList>
     </div>
   );
 }

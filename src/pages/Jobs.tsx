@@ -51,11 +51,13 @@ export const Jobs = () => {
 
   return (
     <div>
-      <SearchJob
-        onSearch={handleSearch}
-      />
-      <FilterBtnYrke />
-
+      <div className="jobs-search-filter">
+        <SearchJob
+          onSearch={handleSearch}
+        />
+        <FilterBtnYrke />
+      </div>
+      
       <JobsPresentation
         currentPage={currentPage}
         totalPages={totalPages}
