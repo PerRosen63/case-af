@@ -26,6 +26,10 @@
 
 /* --------------------- Common css -------------------- */
 
+* {
+  box-sizing: border-box;
+}
+
 .filter-buttons {
   display: flex;
   flex-direction: row;

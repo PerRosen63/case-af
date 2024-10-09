@@ -1,28 +1,50 @@
-import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { IJob } from "../models/IJob";
 import { JobContext } from "../contexts/JobContext";
+import { useContext } from "react";
 
 interface IJobPresentation {
-  job: IJob;
-  
+  job: IJob | null;
+  detailMode?: boolean;
 }
 
-export const JobPresentation = ({
-  
-  job
-}: IJobPresentation) => {
-  /*const { dispatch } = */
-  useContext(JobContext)
+export const JobPresentation = ({ job, detailMode = false }: IJobPresentation) => {
+  const { dispatch } = useContext(JobContext);
 
-  
-  return (<>
-    <div >
-      <h2>{job.id}</h2>
-  
-      
+  if (!job) {
+    return <div>No job data available</div>;
+  }
+
+  return (
+    <div>
+      <ul>
+        <li key={job.id}>
+          {!detailMode && (
+            <>
+              <h3>
+                <Link to={`/job/${job.id}`}>{job.occupation.label}</Link>
+              </h3>
+              <h4 style={{ display: "inline" }}>
+                {job.employer.name},  {job.workplace_address.city 
+                ? job.workplace_address.city 
+                : job.workplace_address.municipality}
+              </h4>
+              <p>Publicerad: {job.publication_date}</p>
+            </>
+          )}
+          {detailMode && (
+            <>
+              <h2>{job.occupation.label}</h2>
+              <h4 style={{ display: "inline" }}>
+                {job.employer.name},  {job.workplace_address.city 
+                ? job.workplace_address.city 
+                : job.workplace_address.municipality}
+              </h4>
+              <p>Publicerad: {job.publication_date}</p>
+            </>
+          )}
+        </li>
+      </ul>
     </div>
-
-
-  </>)
+  );
 }
-
