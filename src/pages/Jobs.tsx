@@ -6,12 +6,11 @@ import { SearchJob } from "../components/SearchJob";
 import { Pagination } from "../components/Pagination";
 import { getJobsBySearch, JOBS_PER_PAGE } from "../service/jobService";
 import { ActionType } from "../reducers/JobReducer";
-import { OccupationsList } from "../components/OccupationsList";
 
 export const Jobs = () => {
   const { jobs, dispatch } = useContext(JobContext);
 
-  const [selectedOccupations, setSelectedOccupations] = useState<string[]>([]);
+  // const [selectedOccupations, setSelectedOccupations] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [activeSearchTerm, setActiveSearchTerm] = useState<string>("");
@@ -43,10 +42,7 @@ export const Jobs = () => {
           fetchJobs(term, 1);
         }}
       />
-      <FilterBtnYrke
-        selectedOccupations={selectedOccupations}
-        setSelectedOccupations={setSelectedOccupations}
-      />
+      <FilterBtnYrke/>
 
       <JobsPresentation
         currentPage={currentPage}
@@ -62,8 +58,6 @@ export const Jobs = () => {
           onPageChange={handlePageChange}
         />
       )}
-
-        <OccupationsList></OccupationsList>
     </div>
   );
 };
