@@ -7,22 +7,23 @@ export interface IAction {
 
 export enum ActionType {
   LOADED,
-  SEARCHED
+  SEARCHED,
 }
 
-export const JobReducer = (
-  jobs: IJob[],
-  action: IAction
-): IJob[] => {
+export const JobReducer = (jobs: IJob[], action: IAction): IJob[] => {
   console.log("Action received:", action);
 
   switch (action.type) {
     case ActionType.LOADED: {
-      return Array.isArray(action.payload) ? action.payload : JSON.parse(action.payload as string);
+      return Array.isArray(action.payload)
+        ? action.payload
+        : JSON.parse(action.payload as string);
     }
 
     case ActionType.SEARCHED: {
-      return Array.isArray(action.payload) ? action.payload : JSON.parse(action.payload as string);
+      return Array.isArray(action.payload)
+        ? action.payload
+        : JSON.parse(action.payload as string);
     }
 
     default:
