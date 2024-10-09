@@ -39,6 +39,7 @@
 
 .occupations-list-popup {
   position: absolute;
+  z-index: 999;
   width: 710px;
   
 }

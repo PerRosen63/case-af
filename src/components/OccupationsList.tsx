@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IOccupation } from "../models/IOccupation";
 import { getOccupation } from "../service/taxonomyService";
 import {
@@ -13,6 +13,9 @@ import {
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
 
+import { OccupationContext } from "../contexts/OccupationContext";
+import { ActionType } from "../reducers/OccupationReducer";
+
 export const OccupationsList = () => {
   const [occupationsGroup, setOccupationsGruop] = useState<IOccupation[]>([]);
 
@@ -25,6 +28,8 @@ export const OccupationsList = () => {
   const [selectAllStatus, setSelectAllStatus] = useState<{
     [groupId: string]: boolean;
   }>({});
+
+  const { dispatch } = useContext(OccupationContext); // Access dispatch here
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,6 +109,38 @@ export const OccupationsList = () => {
     setOpenDivId((prevId) => (prevId === groupId ? null : groupId));
   };
 
+  const handleSubmit = () => {
+    const selectedOccupations = occupationsGroup.flatMap((group) => {
+      const narrowerIds = selectedNarrower[group.id] || [];
+
+      // Check if all narrower occupations within a group are selected
+      const isAllNarrowerSelected =
+        narrowerIds.length === group.narrower.length;
+
+      // If all narrower are selected, return only the groupId
+      if (isAllNarrowerSelected) {
+        return [{ groupId: group.id }];
+      }
+
+      // Otherwise, return an object with groupId and the selected narrowerIds
+      else if (narrowerIds.length > 0) {
+        return [{ groupId: group.id, narrowerIds: narrowerIds }];
+      }
+
+      // If none are selected, return an empty array so this group is skipped
+      else {
+        return [];
+      }
+    });
+
+    // console.log("Selected Occupations:", selectedOccupations);
+
+    dispatch({
+      type: ActionType.FILTER_OCCUPATIONS,
+      payload: selectedOccupations,
+    });
+  };
+
   return (
     <>
       {/* <section> */}
@@ -146,7 +183,10 @@ export const OccupationsList = () => {
                       afLabel="Välj alla"
                       afChecked={selectAllStatus[occupationGroup.id] || false}
                       onAfOnChange={(e) => {
-                        console.log("e.target.checked:", occupationGroup.id);
+                        console.log(
+                          "Yrkesområden e.target.checked:",
+                          occupationGroup.id
+                        );
                         handleSelectAllChange(
                           occupationGroup.id,
                           e.target.checked
@@ -163,6 +203,10 @@ export const OccupationsList = () => {
                           ) || false
                         }
                         onAfOnChange={(e) => {
+                          console.log(
+                            "Yrken e.target.checked:",
+                            narrowerOccupation.id
+                          );
                           handleIndividualCheckboxChange(
                             narrowerOccupation.id,
                             e.target.checked
@@ -177,7 +221,9 @@ export const OccupationsList = () => {
           ))}
         </ul>
         <div className="popup-footer">
-          <DigiButton afSize={ButtonSize.MEDIUM}>Visa ...</DigiButton>
+          <DigiButton afSize={ButtonSize.MEDIUM} onAfOnClick={handleSubmit}>
+            Visa ...
+          </DigiButton>
         </div>
       </div>
       {/* </section> */}
