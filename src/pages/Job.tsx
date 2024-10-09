@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { JobContext } from "../contexts/JobContext";
 import { useParams } from "react-router-dom";
-import { JobPresentation } from "../components/JobPresentation";
+import { JobContext } from "../contexts/JobContext";
+import { JobPresentation } from "../components/JobPresentation.tsx";
 
 export const Job = () => {
   const { id } = useParams();

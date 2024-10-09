@@ -11,6 +11,7 @@ export const Jobs = () => {
   const { jobs, dispatch } = useContext(JobContext);
 
   // const [selectedOccupations, setSelectedOccupations] = useState<string[]>([]);
+  // const [selectedOccupations, setSelectedOccupations] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [activeSearchTerm, setActiveSearchTerm] = useState<string>("");
