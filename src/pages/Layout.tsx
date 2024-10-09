@@ -19,20 +19,12 @@ export const Layout = () => {
           <img src={logoLight} alt="Jobbhjälparnas logo" className="logo-light" />
         </a>
         <div slot="header-content">
-          <DigiHeaderNotification afNotificationAmount={8}>
+          <DigiHeaderNotification afNotificationAmount={4}>
             <a href="/">
               <DigiIconBellFilled></DigiIconBellFilled>
               Notiser
             </a>
           </DigiHeaderNotification>
-          <DigiHeaderAvatar
-            afSrc="/assets/images/avatar.svg"
-            afAlt="Profilbild på Inloggad Medlem"
-            afName="Medlem"
-            afSignature="KALIA"
-            afIsLoggedIn={true}
-            afHideSignature={true}
-          ></DigiHeaderAvatar>
         </div>
         <div slot="header-navigation">
           <DigiHeaderNavigation
