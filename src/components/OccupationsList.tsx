@@ -133,7 +133,7 @@ export const OccupationsList = () => {
       }
     });
 
-    console.log("Selected Occupations:", selectedOccupations);
+    // console.log("Selected Occupations:", selectedOccupations);
 
     dispatch({
       type: ActionType.FILTER_OCCUPATIONS,

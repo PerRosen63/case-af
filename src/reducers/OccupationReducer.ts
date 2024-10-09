@@ -36,7 +36,7 @@ export const occupationReducer = (
   state: OccupationState = initialState,
   action: OccupationAction
 ): OccupationState => {
-  console.log(action.payload);
+  // console.log('Action payload', action.payload);
   switch (action.type) {
     case ActionType.SET_OCCUPATIONS:
       return {

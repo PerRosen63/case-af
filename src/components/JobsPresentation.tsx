@@ -15,14 +15,14 @@ export const JobsPresentation = () => {
   });
 
   useEffect(() => {
-    console.log("All Occupations:", occupations.allOccupations);
+    // console.log("All Occupations:", occupations.allOccupations);
     console.log("Filtered Occupations:", occupations.filteredOccupations);
     console.log("filtered jobs", filteredJobs);
   }, [filteredJobs, occupations]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log("Jobs array:", jobs);
-  }, [jobs]);
+  }, [jobs]); */
 
   return (
     <>
