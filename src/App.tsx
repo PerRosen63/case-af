@@ -9,7 +9,10 @@ import { OccupationProvider } from "./contexts/OccupationContext";
 import OccupationsFetcher from "./components/OccupationsFetcher";
 
 function App() {
-  const [jobs, dispatch] = useReducer(JobReducer, []);
+  const [state, dispatch] = useReducer(JobReducer, {
+    jobs: [],
+    filteredJobs: [],
+  });
 
   useEffect(() => {
     const getData = async () => {
@@ -19,15 +22,14 @@ function App() {
         payload: JSON.stringify(data),
       });
     };
-    if (jobs.length > 0) return;
     getData();
-  }, [jobs.length]);
+  }, []);
 
   return (
     <>
       <OccupationProvider>
         <OccupationsFetcher />
-        <JobContext.Provider value={{ jobs, dispatch }}>
+        <JobContext.Provider value={{ ...state, dispatch }}>
           <RouterProvider router={router}></RouterProvider>
         </JobContext.Provider>
       </OccupationProvider>
