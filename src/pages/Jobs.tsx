@@ -29,7 +29,7 @@ export const Jobs = () => {
   const fetchJobs = async (
     term: string,
     page: number,
-    occupationsParam: string | null // occupations?: string | null
+    //occupationsParam: string | null // occupations?: string | null
   ) => {
     try {
       const totalHits = 100;
