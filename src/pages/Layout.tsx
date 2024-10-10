@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { DigiHeader, DigiFooter, DigiIconBellFilled, DigiHeaderNotification, DigiHeaderAvatar, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiIconAccessibilityUniversal, DigiIconSign, DigiIconGlobe, DigiIconEnvelope, DigiFooterCard, DigiLogo } from '@digi/arbetsformedlingen-react';
+import { DigiHeader, DigiFooter, DigiIconBellFilled, DigiHeaderNotification, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiIconAccessibilityUniversal, DigiIconSign, DigiIconGlobe, DigiIconEnvelope, DigiFooterCard, DigiLogo } from '@digi/arbetsformedlingen-react';
 import { FooterVariation, FooterCardVariation, LogoVariation, LogoColor } from '@digi/arbetsformedlingen';
 import logoLightNoText from '../assets/logo/logo-light-no-text.jpeg';
 import logoLight from '../assets/logo/logo-light.jpeg';
@@ -19,20 +19,12 @@ export const Layout = () => {
           <img src={logoLight} alt="Jobbhjälparnas logo" className="logo-light" />
         </a>
         <div slot="header-content">
-          <DigiHeaderNotification afNotificationAmount={8}>
+          <DigiHeaderNotification afNotificationAmount={4}>
             <a href="/">
               <DigiIconBellFilled></DigiIconBellFilled>
               Notiser
             </a>
           </DigiHeaderNotification>
-          <DigiHeaderAvatar
-            afSrc="/assets/images/avatar.svg"
-            afAlt="Profilbild på Inloggad Medlem"
-            afName="Medlem"
-            afSignature="KALIA"
-            afIsLoggedIn={true}
-            afHideSignature={true}
-          ></DigiHeaderAvatar>
         </div>
         <div slot="header-navigation">
           <DigiHeaderNavigation
