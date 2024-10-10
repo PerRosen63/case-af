@@ -11,30 +11,52 @@ import { ActionType } from "../reducers/JobReducer";
 export const Jobs = () => {
   const { jobs, dispatch } = useContext(JobContext);
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageParam = searchParams.get('page');
-  const searchTermParam = searchParams.get('searchTerm');
+  const pageParam = searchParams.get("page");
+  const searchTermParam = searchParams.get("searchTerm");
+  // const occupationsParam = searchParams.get("occupations");
 
-  const [currentPage, setCurrentPage] = useState<number>(pageParam ? parseInt(pageParam) : 1);
+  const [currentPage, setCurrentPage] = useState<number>(
+    pageParam ? parseInt(pageParam) : 1
+  );
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [activeSearchTerm, setActiveSearchTerm] = useState<string>(searchTermParam || "");
+  const [activeSearchTerm, setActiveSearchTerm] = useState<string>(
+    searchTermParam || ""
+  );
 
+  const occupationsParam = decodeURIComponent(
+    searchParams.get("occupations") || ""
+  );
 
-  useEffect(() => {
-    fetchJobs(activeSearchTerm, currentPage);
-  }, [currentPage, activeSearchTerm]);
+  console.log("occupationsParam:", occupationsParam); // Should log "apaJ_2ja_LuF"
 
-  const fetchJobs = async (term: string, page: number) => {
+  const fetchJobs = async (
+    term: string,
+    page: number,
+    occupationsParam: string | null // occupations?: string | null
+  ) => {
     try {
+      const totalHits = 100;
+      const jobsPerPage = JOBS_PER_PAGE;
+
       const jobs = await getJobsBySearch(term, page);
       dispatch({ type: ActionType.SEARCHED, payload: jobs });
 
-      const totalHits = 100;
-      const jobsPerPage = JOBS_PER_PAGE;
       setTotalPages(Math.ceil(totalHits / jobsPerPage));
     } catch (error) {
       console.error("Error fetching jobs:", error);
     }
   };
+
+  useEffect(() => {
+    fetchJobs(activeSearchTerm, currentPage, occupationsParam);
+  }, [currentPage, activeSearchTerm, occupationsParam]);
+
+  useEffect(() => {
+    fetchJobs(activeSearchTerm, currentPage, occupationsParam);
+
+    // Dispatch an action to filter jobs based on occupationsParam
+    dispatch({ type: ActionType.FILTER_JOBS, payload: occupationsParam });
+  }, [currentPage, activeSearchTerm, occupationsParam]);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -45,19 +67,17 @@ export const Jobs = () => {
   const handleSearch = (term: string) => {
     setActiveSearchTerm(term);
     setCurrentPage(1);
-    setSearchParams({ page: '1', searchTerm: term });
+    setSearchParams({ page: "1", searchTerm: term });
     fetchJobs(term, 1);
   };
 
   return (
     <div>
       <div className="jobs-search-filter">
-        <SearchJob
-          onSearch={handleSearch}
-        />
+        <SearchJob onSearch={handleSearch} />
         <FilterBtnYrke />
       </div>
-      
+
       <JobsPresentation
         currentPage={currentPage}
         totalPages={totalPages}
