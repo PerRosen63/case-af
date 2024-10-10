@@ -1,7 +1,7 @@
 import { Dispatch, createContext, useReducer } from "react";
 import { IJob } from "../models/IJob";
 import { IAction } from "../reducers/JobReducer";
-import { JobReducer } from "../reducers/JobReducer"; // Import the reducer
+import { JobReducer } from "../reducers/JobReducer";
 
 type JobContextType = {
   jobs: IJob[];
@@ -13,18 +13,15 @@ export const JobContext = createContext<JobContextType>({
   jobs: [],
   filteredJobs: [],
   dispatch: () => {
-    // This is just a placeholder
     return;
   },
 });
 
 export const JobProvider = ({ children }: { children: React.ReactNode }) => {
-  // Define initialState inside the provider component
   const initialState: JobContextType = {
     jobs: [],
     filteredJobs: [],
     dispatch: () => {
-      // Placeholder
       return;
     },
   };

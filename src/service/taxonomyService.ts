@@ -18,6 +18,6 @@ export const getOccupation = async (): Promise<IOccupation[]> => {
     return occupationsCache;
   } catch (error) {
     console.error("Error fetching occupations:", error);
-    return []; // Return an empty array on error
+    return [];
   }
 };

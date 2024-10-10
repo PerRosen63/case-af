@@ -12,35 +12,20 @@ interface IJobsPresentationProps {
 }
 
 export const JobsPresentation: React.FC<IJobsPresentationProps> = () => {
-  const { filteredJobs } = useContext(JobContext); // Access filteredJobs
+  const { filteredJobs } = useContext(JobContext);
 
   const { occupations } = useContext(OccupationContext);
-  /* const { filteredOccupations } = occupations;
-  const { jobs } = useContext(JobContext); */
-
-  /* const filteredJobs = jobs.filter((job: IJob) => {
-    return filteredOccupations.some(
-      (occupation) => occupation.id === job.occupation_field.concept_id
-    );
-  }); */
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // console.log("All Occupations:", occupations.allOccupations);
-    console.log("Filtered Occupations:", occupations.filteredOccupations);
-
     setIsLoading(false);
   }, [filteredJobs, occupations]);
 
-  /* useEffect(() => {
-    console.log("Jobs array:", jobs);
-  }, [jobs]); */
-
   if (isLoading) {
-    return <p>Laddar jobb...</p>; // Display a loading message
+    return <p>Laddar jobb...</p>;
   }
-  console.log("filtered jobs", filteredJobs);
+
   return (
     <>
       {filteredJobs.length === 0 ? (

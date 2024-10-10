@@ -17,7 +17,7 @@ export const OccupationsFetcher = () => {
     fetchData();
   }, [dispatch]);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default OccupationsFetcher;

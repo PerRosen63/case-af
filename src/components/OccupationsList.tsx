@@ -30,7 +30,7 @@ export const OccupationsList = () => {
     [groupId: string]: boolean;
   }>({});
 
-  const { dispatch } = useContext(OccupationContext); // Access dispatch here
+  const { dispatch } = useContext(OccupationContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -116,27 +116,17 @@ export const OccupationsList = () => {
     const selectedOccupations = occupationsGroup.flatMap((group) => {
       const narrowerIds = selectedNarrower[group.id] || [];
 
-      // Check if all narrower occupations within a group are selected
       const isAllNarrowerSelected =
         narrowerIds.length === group.narrower.length;
 
-      // If all narrower are selected, return only the groupId
-      if (isAllNarrowerSelected) {
+      if (isAllNarrowerSelected || narrowerIds.length === 0) {
         return [{ groupId: group.id }];
-      }
-
-      // Otherwise, return an object with groupId and the selected narrowerIds
-      else if (narrowerIds.length > 0) {
+      } else if (narrowerIds.length > 0) {
         return [{ groupId: group.id, narrowerIds: narrowerIds }];
-      }
-
-      // If none are selected, return an empty array so this group is skipped
-      else {
+      } else {
         return [];
       }
     });
-
-    // console.log("Selected Occupations:", selectedOccupations);
 
     dispatch({
       type: ActionType.FILTER_OCCUPATIONS,
@@ -151,14 +141,12 @@ export const OccupationsList = () => {
           return occupation.groupId;
         }
       })
-      .join(";"); // Use a separator like ';' for multiple occupations
+      .join(";");
 
-    const activeSearchTerm = searchParams.get("searchTerm") || ""; // Get search term from URL
-
-    console.log("occupationParams", occupationParams);
+    const activeSearchTerm = searchParams.get("searchTerm") || "";
 
     setSearchParams({
-      page: "1", // Reset to page 1 when filters change
+      page: "1",
       searchTerm: activeSearchTerm,
       occupations: occupationParams,
     });
@@ -166,7 +154,6 @@ export const OccupationsList = () => {
 
   return (
     <>
-      {/* <section> */}
       <div className="occupations-list-wrapper">
         <DigiTypography afVariation={TypographyVariation.SMALL}>
           <div className="list-header">
@@ -249,7 +236,6 @@ export const OccupationsList = () => {
           </DigiButton>
         </div>
       </div>
-      {/* </section> */}
     </>
   );
 };

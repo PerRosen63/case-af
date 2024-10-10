@@ -13,7 +13,6 @@ export const Jobs = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParam = searchParams.get("page");
   const searchTermParam = searchParams.get("searchTerm");
-  // const occupationsParam = searchParams.get("occupations");
 
   const [currentPage, setCurrentPage] = useState<number>(
     pageParam ? parseInt(pageParam) : 1
@@ -26,8 +25,6 @@ export const Jobs = () => {
   const occupationsParam = decodeURIComponent(
     searchParams.get("occupations") || ""
   );
-
-  console.log("occupationsParam:", occupationsParam); // Should log "apaJ_2ja_LuF"
 
   const fetchJobs = async (
     term: string,
