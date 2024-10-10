@@ -11,7 +11,7 @@ interface IJobPresentation {
 }
 
 export const JobPresentation = ({ job, detailMode = false }: IJobPresentation) => {
-  const { dispatch } = useContext(JobContext);
+  useContext(JobContext);
 
   if (!job) {
     return <div>No job data available</div>;
