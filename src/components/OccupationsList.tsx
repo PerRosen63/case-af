@@ -15,6 +15,7 @@ import {
 
 import { OccupationContext } from "../contexts/OccupationContext";
 import { ActionType } from "../reducers/OccupationReducer";
+import { useSearchParams } from "react-router-dom";
 
 export const OccupationsList = () => {
   const [occupationsGroup, setOccupationsGruop] = useState<IOccupation[]>([]);
@@ -30,6 +31,8 @@ export const OccupationsList = () => {
   }>({});
 
   const { dispatch } = useContext(OccupationContext); // Access dispatch here
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -138,6 +141,26 @@ export const OccupationsList = () => {
     dispatch({
       type: ActionType.FILTER_OCCUPATIONS,
       payload: selectedOccupations,
+    });
+
+    const occupationParams = selectedOccupations
+      .map((occupation) => {
+        if (occupation.narrowerIds) {
+          return `${occupation.groupId}-${occupation.narrowerIds.join(",")}`;
+        } else {
+          return occupation.groupId;
+        }
+      })
+      .join(";"); // Use a separator like ';' for multiple occupations
+
+    const activeSearchTerm = searchParams.get("searchTerm") || ""; // Get search term from URL
+
+    console.log("occupationParams", occupationParams);
+
+    setSearchParams({
+      page: "1", // Reset to page 1 when filters change
+      searchTerm: activeSearchTerm,
+      occupations: occupationParams,
     });
   };
 
