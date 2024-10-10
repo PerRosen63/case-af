@@ -30,20 +30,33 @@
   box-sizing: border-box;
 }
 
-.filter-buttons {
+body {
+  margin: 0;
+}
+
+ul {
+  padding-left: 0!important;
+}
+
+/* .filter-buttons {
   display: flex;
   flex-direction: row;
   gap: 5px;
-}
+} 
 .search-input {
   width: 350px;
-}
+}*/
 
 
 /*  ------------------header----------------------------  */
 
 .sc-digi-logo-s {
   display: none;
+}
+
+.digi-header__logo, .digi-header-navigation__inner {
+  max-width: 1140px!important;
+  margin: 0 auto!important;
 }
 
 
@@ -58,14 +71,23 @@ main {
   height: auto;
   padding-top: 30px;
   padding-bottom: 30px;
-  padding-left: 15px;
+  /* padding-left: 15px; */
 }
 
-.digi-form-input-search {
+.jobs-search-filter form, .button-row {
+  max-width: 1140px;
+    margin: 0 auto;
+}
+
+.digi-form-input {
+  padding-right: 150px;
+}
+
+/* .digi-form-input-search {
   box-sizing: border-box;
   padding-right: 20px;
   width: 95vw;
-}
+} */
 
 .sc-digi-form-label {
   color: #ffffff;
@@ -86,11 +108,17 @@ main {
 
 .digi-list__list {
   list-style-type: none;
+  max-width: 1140px;
+    margin: 0 auto;
+}
+
+.digi-list__item {
+  padding: .7rem
 }
 
 .digi-list__item {        /* unable to manipulate left margin */
   background: #ffffff;
-  width: 100vw;
+  /* width: 100vw */;
   margin-top: 8px;
 }
 
