@@ -13,10 +13,9 @@ export interface IAction {
 export enum ActionType {
   LOADED,
   SEARCHED,
-  FILTER_JOBS, // Add a new action type for filtering
+  FILTER_JOBS,
 }
 
-// Define initialState here:
 const initialState: JobState = {
   jobs: [],
   filteredJobs: [],
@@ -37,7 +36,7 @@ export const JobReducer = (
       return {
         ...state,
         jobs: newJobs,
-        filteredJobs: newJobs, // Update filteredJobs as well
+        filteredJobs: newJobs,
       };
     }
 
@@ -45,17 +44,10 @@ export const JobReducer = (
       if (typeof action.payload === "string" || action.payload === null) {
         const occupationGroupIds = action.payload
           ? action.payload.split(";")
-          : []; // Split by semicolon
+          : [];
         return {
           ...state,
           filteredJobs: state.jobs.filter((job: IJob) => {
-            // Assuming job.occupation_field.concept_id contains the group ID
-            console.log("Filtering by group IDs:", occupationGroupIds);
-            /* const testGroupId = "apaJ_2ja_LuF";
-            return (
-              job.occupation_field.concept_id.toLowerCase() ===
-              testGroupId.toLowerCase()
-            ); */
             return (
               occupationGroupIds.length === 0 ||
               occupationGroupIds.includes(job.occupation_field.concept_id)

@@ -1,12 +1,10 @@
 import { IOccupation } from "../models/IOccupation";
 
-// Define the actions for the reducer
 export enum ActionType {
   SET_OCCUPATIONS = "SET_OCCUPATIONS",
   FILTER_OCCUPATIONS = "FILTER_OCCUPATIONS",
 }
 
-// Define the action types
 interface SetOccupationsAction {
   type: ActionType.SET_OCCUPATIONS;
   payload: IOccupation[];
@@ -23,7 +21,7 @@ interface FilterOccupationsAction {
 export type OccupationAction = SetOccupationsAction | FilterOccupationsAction;
 
 interface OccupationState {
-  allOccupations: IOccupation[]; // Store all fetched occupations
+  allOccupations: IOccupation[];
   filteredOccupations: IOccupation[];
 }
 
@@ -36,34 +34,30 @@ export const occupationReducer = (
   state: OccupationState = initialState,
   action: OccupationAction
 ): OccupationState => {
-  // console.log('Action payload', action.payload);
   switch (action.type) {
     case ActionType.SET_OCCUPATIONS:
       return {
         ...state,
         allOccupations: action.payload,
-        filteredOccupations: action.payload, // Initially, filtered is the same as all
+        filteredOccupations: action.payload,
       };
     case ActionType.FILTER_OCCUPATIONS:
       return {
         ...state,
         filteredOccupations: action.payload
           .map((selected) => {
-            // Select All case: Find the occupation group by groupId
             if (!selected.narrowerIds) {
               const group = state.allOccupations.find(
                 (occupation) => occupation.id === selected.groupId
               );
-              return group || []; // Return the group object, not the entire occupation
-            }
-            // Individual selection case: Filter by narrowerIds
-            else {
+              return group || [];
+            } else {
               return state.allOccupations.filter((occupation) =>
                 selected.narrowerIds?.includes(occupation.id)
               );
             }
           })
-          .flat(), // Flatten the array after mapping
+          .flat(),
       };
     default:
       return state;

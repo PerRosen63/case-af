@@ -6,13 +6,6 @@ import {
 } from "@digi/arbetsformedlingen-react";
 import { ButtonSize, ButtonVariation } from "@digi/arbetsformedlingen";
 
-/*
-interface FilterBtnYrkeProps {
-  selectedOccupations: string[];
-  setSelectedOccupations: (occupations: string[]) => void;
-}
-*/
-
 export const FilterBtnYrke = () => {
   const [showOccupationsList, setShowOccupationsList] = useState(false);
 
