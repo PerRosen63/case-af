@@ -135,7 +135,7 @@ export const OccupationsList = () => {
 
     const occupationParams = selectedOccupations
       .map((occupation) => {
-        if (occupation.narrowerIds) {
+        if (occupation.narrower.ids) {
           return `${occupation.groupId}-${occupation.narrowerIds.join(",")}`;
         } else {
           return occupation.groupId;

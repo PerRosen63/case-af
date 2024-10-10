@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FilterBtnYrke } from "../components/FilterBtnYrke";
 import { JobsPresentation } from "../components/JobsPresentation";
@@ -21,11 +21,11 @@ export const Jobs = () => {
   const [activeSearchTerm, setActiveSearchTerm] = useState<string>(
     searchTermParam || ""
   );
-
+/*
   const occupationsParam = decodeURIComponent(
     searchParams.get("occupations") || ""
   );
-
+*/
   const fetchJobs = async (
     term: string,
     page: number,
@@ -43,17 +43,17 @@ export const Jobs = () => {
       console.error("Error fetching jobs:", error);
     }
   };
-
+/*
   useEffect(() => {
     fetchJobs(activeSearchTerm, currentPage, occupationsParam);
   }, [currentPage, activeSearchTerm, occupationsParam]);
-
+*/
+/*
   useEffect(() => {
     fetchJobs(activeSearchTerm, currentPage, occupationsParam);
 
-    // Dispatch an action to filter jobs based on occupationsParam
     dispatch({ type: ActionType.FILTER_JOBS, payload: occupationsParam });
-  }, [currentPage, activeSearchTerm, occupationsParam]);
+  }, [currentPage, activeSearchTerm, occupationsParam]);*/
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
