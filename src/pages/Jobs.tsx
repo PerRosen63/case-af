@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FilterBtnYrke } from "../components/FilterBtnYrke";
 import { JobsPresentation } from "../components/JobsPresentation";
@@ -26,34 +26,32 @@ export const Jobs = () => {
     searchParams.get("occupations") || ""
   );
 
-  const fetchJobs = async (
-    term: string,
-    page: number,
-    //occupationsParam: string | null // occupations?: string | null
-  ) => {
-    try {
-      const totalHits = 100;
-      const jobsPerPage = JOBS_PER_PAGE;
+  const fetchJobs = useCallback(
+    async (term: string, page: number) => {
+      try {
+        const totalHits = 100;
+        const jobsPerPage = JOBS_PER_PAGE;
 
-      const jobs = await getJobsBySearch(term, page);
-      dispatch({ type: ActionType.SEARCHED, payload: jobs });
+        const jobs = await getJobsBySearch(term, page);
+        dispatch({ type: ActionType.SEARCHED, payload: jobs });
 
-      setTotalPages(Math.ceil(totalHits / jobsPerPage));
-    } catch (error) {
-      console.error("Error fetching jobs:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchJobs(activeSearchTerm, currentPage, occupationsParam);
-  }, [currentPage, activeSearchTerm, occupationsParam]);
+        setTotalPages(Math.ceil(totalHits / jobsPerPage));
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
-    fetchJobs(activeSearchTerm, currentPage, occupationsParam);
+    fetchJobs(activeSearchTerm, currentPage);
+  }, [currentPage, activeSearchTerm, occupationsParam, fetchJobs]);
 
-    // Dispatch an action to filter jobs based on occupationsParam
+  useEffect(() => {
+    fetchJobs(activeSearchTerm, currentPage);
+
     dispatch({ type: ActionType.FILTER_JOBS, payload: occupationsParam });
-  }, [currentPage, activeSearchTerm, occupationsParam]);
+  }, [currentPage, activeSearchTerm, occupationsParam, dispatch, fetchJobs]);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
